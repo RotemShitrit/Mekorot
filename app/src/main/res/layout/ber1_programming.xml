@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutButtons"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="7dp"
+        android:gravity="center_horizontal"
+        android:weightSum="1.0">
+
+        <Button
+            android:id="@+id/programBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:text="Program"
+            android:textColor="@color/colorButtonText" />
+
+        <Button
+            android:id="@+id/saveBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@+id/loadBtn"
+            android:layout_toEndOf="@+id/programBtn"
+            android:text="Save File"
+            android:textColor="@color/colorButtonText" />
+
+        <Button
+            android:id="@+id/loadBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:text="Load file"
+            android:textColor="@color/colorButtonText" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollViewRegisters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayoutButtons"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="1"
+        android:fadeScrollbars="false"
+        android:scrollbarSize="6dp"
+        android:scrollbarThumbVertical="@color/scrollbarThumb"
+        android:scrollbarTrackVertical="@color/scrollbarTrack">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="fill_horizontal"
+            tools:context=".Ber1Activity"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/idTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:text="ID: "
+                android:textSize="13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextID"
+                android:layout_width="157dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:inputType="number"
+                android:textSize="13dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/idTextView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/AccumulationTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/idTextView"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Accumulation: "
+                android:textSize="13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/idTextView" />
+
+            <EditText
+                android:id="@+id/editTextAccomulation"
+                android:layout_width="157dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextID"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="5dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:inputType="number"
+                android:textSize="13dp"
+                android:maxLength="8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/AccumulationTextView"
+                app:layout_constraintTop_toBottomOf="@+id/editTextID" />
+
+            <TextView
+                android:id="@+id/NegativeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/AccumulationTextView"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Negative: "
+                android:textSize="13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/AccumulationTextView" />
+
+            <EditText
+                android:id="@+id/editTextNegative"
+                android:layout_width="157dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextAccomulation"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="5dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:inputType="number"
+                android:textSize="13dp"
+                android:maxLength="8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/NegativeTextView"
+                app:layout_constraintTop_toBottomOf="@+id/editTextAccomulation" />
+
+            <TextView
+                android:id="@+id/PositiveTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/NegativeTextView"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Positive: "
+                android:textSize="13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/NegativeTextView" />
+
+            <EditText
+                android:id="@+id/editTextPositive"
+                android:layout_width="157dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextNegative"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="5dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:enabled="false"
+                android:inputType="number"
+                android:maxLength="8"
+                android:textSize="13dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/PositiveTextView"
+                app:layout_constraintTop_toBottomOf="@+id/editTextNegative" />
+
+            <TextView
+                android:id="@+id/meterTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/PositiveTextView"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Meter Type: "
+                android:textSize="13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/MeterSpinner"
+                android:layout_width="157dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextPositive"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/spinner2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/meterTextView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/SizeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/meterTextView"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="23dp"
+                android:text="Size: "
+                android:textSize="13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meterTextView" />
+
+            <Spinner
+                android:id="@+id/SpinnerSize"
+                android:layout_width="157dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/MeterSpinner"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/spinner2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/SizeTextView"
+                app:layout_constraintTop_toBottomOf="@+id/MeterSpinner" />
+
+            <TextView
+                android:id="@+id/flowUnitTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/SizeTextView"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:text="Flow unit: "
+                android:textSize="13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/SizeTextView" />
+
+            <Spinner
+                android:id="@+id/SpinnerFlowUnit"
+                android:layout_width="157dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/SpinnerSize"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/spinner2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/flowUnitTextView"
+                app:layout_constraintTop_toBottomOf="@+id/SpinnerSize" />
+
+            <TextView
+                android:id="@+id/volumeTypeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/flowUnitTextView"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:text="Accumulation units:"
+                android:textSize="13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/flowUnitTextView" />
+
+            <Spinner
+                android:id="@+id/SpinnerAccUnit"
+                android:layout_width="157dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/SpinnerFlowUnit"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/spinner2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/volumeTypeTextView"
+                app:layout_constraintTop_toBottomOf="@+id/SpinnerFlowUnit" />
+
+            <TextView
+                android:id="@+id/pulseVolumeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/volumeTypeTextView"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:text="Resolution: "
+                android:textSize="13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/volumeTypeTextView" />
+
+            <Spinner
+                android:id="@+id/SpinnerResolution"
+                android:layout_width="157dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/SpinnerAccUnit"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/spinner2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/pulseVolumeTextView"
+                app:layout_constraintTop_toBottomOf="@+id/SpinnerAccUnit" />
+
+            <TextView
+                android:id="@+id/pulseWidthTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pulseVolumeTextView"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:text="Pulse width [ms]: "
+                android:textSize="13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pulseVolumeTextView" />
+
+            <Spinner
+                android:id="@+id/SpinnerPulseWidth"
+                android:layout_width="157dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/SpinnerResolution"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/spinner2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/pulseWidthTextView"
+                app:layout_constraintTop_toBottomOf="@+id/SpinnerResolution" />
+
+
+            <TextView
+                android:id="@+id/FactorTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pulseWidthTextView"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Factor Q4: "
+                android:textSize="13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pulseWidthTextView" />
+
+            <EditText
+                android:id="@+id/editTextFactor"
+                android:layout_width="157dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/SpinnerPulseWidth"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="5dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:inputType="number"
+                android:maxLength="5"
+                android:textSize="13dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/FactorTextView"
+                app:layout_constraintTop_toBottomOf="@+id/SpinnerPulseWidth" />
+
+            <TextView
+                android:id="@+id/Q3TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/FactorTextView"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="∆Q3 [%]: "
+                android:textSize="13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meterTextView" />
+
+            <EditText
+                android:id="@+id/editTextQ3"
+                android:layout_width="157dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextFactor"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="5dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:digits="0123456789.-"
+                android:inputType="numberDecimal|numberSigned"
+                android:textSize="13dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/Q3TextView"
+                app:layout_constraintTop_toBottomOf="@+id/editTextFactor" />
+
+            <TextView
+                android:id="@+id/Q03TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Q3TextView"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="∆Q03 [%]: "
+                android:textSize="13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Q3TextView" />
+
+            <EditText
+                android:id="@+id/editTextQ03"
+                android:layout_width="157dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextQ3"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="5dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:digits="0123456789.-"
+                android:inputType="numberDecimal|numberSigned"
+                android:textSize="13dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/Q03TextView"
+                app:layout_constraintTop_toBottomOf="@+id/editTextQ3" />
+
+            <TextView
+                android:id="@+id/Q2TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Q03TextView"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="∆Q2 [%]: "
+                android:textSize="13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Q03TextView" />
+
+            <EditText
+                android:id="@+id/editTextQ2"
+                android:layout_width="157dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextQ03"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="5dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:digits="0123456789.-"
+                android:inputType="numberDecimal|numberSigned"
+                android:textSize="13dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/Q2TextView"
+                app:layout_constraintTop_toBottomOf="@+id/editTextQ03" />
+
+            <TextView
+                android:id="@+id/Q1TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Q2TextView"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="∆Q1 [%]: "
+                android:textSize="13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Q2TextView" />
+
+            <EditText
+                android:id="@+id/editTextQ1"
+                android:layout_width="157dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextQ2"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="5dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:digits="0123456789.-"
+                android:inputType="numberDecimal|numberSigned"
+                android:textSize="13dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/Q1TextView"
+                app:layout_constraintTop_toBottomOf="@+id/editTextQ2" />
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

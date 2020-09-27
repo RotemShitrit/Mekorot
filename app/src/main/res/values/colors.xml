@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#fa961b</color>
+    <color name="colorPrimaryDark">#e66807</color>
+    <color name="scrollbarTrack">#5CFF8526</color>
+    <color name="scrollbarThumb">#FF8526</color>
+    <color name="colorAccent">#ffffff</color>
+    <color name="colorButtonText">#458FCC</color>
+    <color name="colorButtonBackground">#FCFCFC</color>
+    <color name="colorWhiteBackground">#FFFFFFFF</color>
+</resources>
