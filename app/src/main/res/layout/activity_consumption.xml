@@ -108,8 +108,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/inputSpinner"
-        android:layout_marginTop="30dp"
+        android:layout_below="@+id/registerSpinner"
+        android:layout_marginTop="25dp"
         android:textColor="@color/colorButtonText"
         android:text="Get Flow Rate"
         android:textSize="20sp"/>
@@ -141,6 +141,28 @@
         android:gravity="end"
         android:text="m³/h"
         android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/registerTypeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inputTextView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:text="Register Type"
+        android:textSize="18sp" />
+
+    <Spinner
+        android:id="@+id/registerSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inputSpinner"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_toEndOf="@+id/registerTypeTextView"/>
 
 
 </RelativeLayout>

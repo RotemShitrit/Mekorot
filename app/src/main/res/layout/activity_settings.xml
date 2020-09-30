@@ -14,57 +14,41 @@
 
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextRanManURL"
-        android:layout_alignEnd="@+id/editTextRanManURL"
-        android:layout_alignParentStart="true"
-        android:text="Set Field Verification 1 Frequency"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="13sp"
-        android:visibility="invisible" />
-
-    <EditText
-        android:id="@+id/editTextReadMeterFreq"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView7"
-        android:layout_alignEnd="@+id/textView7"
-        android:layout_alignParentStart="true"
-        android:digits="0123456789."
-        android:inputType="numberDecimal"
-        android:text="174.0"
-        android:textColorHighlight="@color/primary_material_dark"
-        android:textCursorDrawable="@drawable/cursor_drawable"
-        android:textSize="11sp" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextHHID"
         android:layout_alignEnd="@+id/editTextHHID"
         android:layout_alignParentStart="true"
-        android:text="Set Read Meter Frequency"
+        android:text="HH ID"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="13sp" />
 
     <EditText
-        android:id="@+id/editTextReadRDMFreq"
+    android:id="@+id/editTextHHID"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/textView4"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentEnd="true"
+    android:digits="0123456789"
+    android:inputType="number"
+    android:text="02233"
+    android:textColorHighlight="@color/primary_material_dark"
+    android:textCursorDrawable="@drawable/cursor_drawable"
+    android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView3"
+        android:layout_below="@+id/editTextHHID"
+        android:layout_alignEnd="@+id/editTextHHID"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:digits="0123456789."
-        android:inputType="numberDecimal"
-        android:text="173.0"
-        android:textColorHighlight="@color/primary_material_dark"
-        android:textCursorDrawable="@drawable/cursor_drawable"
-        android:textSize="11sp" />
+        android:text="RANMAN URL"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="13sp" />
 
     <EditText
         android:id="@+id/editTextRanManURL"
@@ -78,81 +62,17 @@
         android:textSize="11sp" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editTextHHID"
+        android:layout_below="@+id/editTextRanManURL"
+        android:layout_alignEnd="@+id/editTextRanManURL"
         android:layout_alignParentStart="true"
-        android:text="HH ID"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="13sp" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextFieldVerifFreq1"
-        android:layout_alignEnd="@+id/editTextFieldVerifFreq1"
-        android:layout_alignParentStart="true"
-        android:text="Set Field Verification 2 Frequency"
+        android:text="Set Field Verification 1 Frequency"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="13sp"
-        android:visibility="invisible" />
-
-    <EditText
-        android:id="@+id/editTextHHID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView4"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:digits="0123456789"
-        android:inputType="number"
-        android:text="02233"
-        android:textColorHighlight="@color/primary_material_dark"
-        android:textCursorDrawable="@drawable/cursor_drawable"
-        android:textSize="11sp" />
-
-    <EditText
-        android:id="@+id/editTextFieldVerifFreq2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView6"
-        android:layout_alignEnd="@+id/textView6"
-        android:layout_alignParentStart="true"
-        android:digits="0123456789."
-        android:inputType="numberDecimal"
-        android:text="173.0"
-        android:textColorHighlight="@color/primary_material_dark"
-        android:textCursorDrawable="@drawable/cursor_drawable"
-        android:textSize="11sp"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextReadMeterFreq"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:text="Set RDM Control Frequency"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="13sp" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextReadRDMFreq"
-        android:layout_alignEnd="@+id/editTextReadRDMFreq"
-        android:layout_alignParentStart="true"
-        android:text="RANMAN URL"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="13sp" />
+        android:visibility="invisible"/>
 
     <EditText
         android:id="@+id/editTextFieldVerifFreq1"
@@ -167,7 +87,91 @@
         android:textColorHighlight="@color/primary_material_dark"
         android:textCursorDrawable="@drawable/cursor_drawable"
         android:textSize="11sp"
-        android:visibility="invisible" />
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextFieldVerifFreq1"
+        android:layout_alignEnd="@+id/editTextFieldVerifFreq1"
+        android:layout_alignParentStart="true"
+        android:text="Set Field Verification 2 Frequency"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="13sp"
+        android:visibility="invisible"/>
+
+    <EditText
+        android:id="@+id/editTextFieldVerifFreq2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView6"
+        android:layout_alignEnd="@+id/textView6"
+        android:layout_alignParentStart="true"
+        android:digits="0123456789."
+        android:inputType="numberDecimal"
+        android:text="173.0"
+        android:textColorHighlight="@color/primary_material_dark"
+        android:textCursorDrawable="@drawable/cursor_drawable"
+        android:textSize="11sp"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextFieldVerifFreq2"
+        android:layout_alignEnd="@+id/editTextFieldVerifFreq2"
+        android:layout_alignParentStart="true"
+        android:text="Set Read Meter Frequency"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="13sp"
+        android:visibility="invisible"/>
+
+    <EditText
+        android:id="@+id/editTextReadMeterFreq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView7"
+        android:layout_alignEnd="@+id/textView7"
+        android:layout_alignParentStart="true"
+        android:digits="0123456789."
+        android:inputType="numberDecimal"
+        android:text="174.0"
+        android:textColorHighlight="@color/primary_material_dark"
+        android:textCursorDrawable="@drawable/cursor_drawable"
+        android:textSize="11sp"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextReadMeterFreq"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:text="Set RDM Control Frequency"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="13sp"
+        android:visibility="invisible"/>
+
+    <EditText
+        android:id="@+id/editTextReadRDMFreq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:digits="0123456789."
+        android:inputType="numberDecimal"
+        android:text="173.0"
+        android:textColorHighlight="@color/primary_material_dark"
+        android:textCursorDrawable="@drawable/cursor_drawable"
+        android:textSize="11sp"
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/textViewAppver"

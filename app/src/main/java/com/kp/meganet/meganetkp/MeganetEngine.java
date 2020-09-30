@@ -710,7 +710,7 @@ public class MeganetEngine extends BTengine {
                 _startCollect = false;
             }
         }
-        else if((_currentCommand == commandType.READ)) // for programming option - if the list not up then send again read msg 3 times at most
+        /*else if((_currentCommand == commandType.READ)) // for programming option - if the list not up then send again read msg 3 times at most
         {
             if( _timerCount <= 3)
             {
@@ -721,7 +721,7 @@ public class MeganetEngine extends BTengine {
             else {
                 _timerCount = 0;
             }
-        }
+        }*/
         else
             _timerCount = 0;
 
