@@ -1,3 +1,4 @@
+//noinspection DuplicatePlatformClasses
 apply plugin: 'com.android.application'
 
 android {
@@ -5,12 +6,13 @@ android {
         checkReleaseBuilds false
         abortOnError false
     }
+        //noinspection GradleCompatible
         compileSdkVersion 23
     buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.kp.meganet.meganetkp"
         minSdkVersion 22
-        targetSdkVersion 22
+        targetSdkVersion 29
         versionCode 1
         versionName '1.1'
     }
