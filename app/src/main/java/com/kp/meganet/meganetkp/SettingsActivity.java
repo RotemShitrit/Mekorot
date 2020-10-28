@@ -102,6 +102,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
+                Toast.makeText(getApplicationContext(), "שומר...", Toast.LENGTH_SHORT).show();
                 CommonSettingsData data = new CommonSettingsData();
 
                 data.SetID(1);
@@ -148,10 +149,9 @@ public class SettingsActivity extends AppCompatActivity {
                 data.SetKeyName("rdm_freq");
                 data.SetKeyValue(RDMFreqEditText.getText().toString());
                 MeganetInstances.getInstance().GetMeganetDb().updateProperty(data);
-
                 MeganetInstances.getInstance().GetMeganetEngine().ReInitProperties(fieldVerifFreq1EditText.getText().toString(), fieldVerifFreq2EditText.getText().toString(), readMeterFreqEditText.getText().toString(), RDMFreqEditText.getText().toString(), Utilities.StringCompleter(hhidEditText.getText().toString(), 5, "0", true), uskp);
-
                 finish();
+                Toast.makeText(getApplicationContext(), "נשמר", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -179,7 +179,7 @@ public class SettingsActivity extends AppCompatActivity {
                 intent = new Intent(SettingsActivity.this, ReadsActivity.class);
                 startActivity(intent);
                 break;
-*/
+
             case R.id.menu_settings_ranman:
                 super.onBackPressed();
                 Toast.makeText(getApplicationContext(), "RANMAN RSSI", Toast.LENGTH_LONG).show();
@@ -209,7 +209,7 @@ public class SettingsActivity extends AppCompatActivity {
 */
             case R.id.menu_settings_ftp:
                 super.onBackPressed();
-                Toast.makeText(getApplicationContext(), "FTP", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "הגדרות FTP", Toast.LENGTH_LONG).show();
 
                 MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
                 intent = new Intent(SettingsActivity.this, FTP_Controll.class);
@@ -227,7 +227,7 @@ public class SettingsActivity extends AppCompatActivity {
                 break;
 */
             case R.id.menu_settings_getlog:
-                Toast.makeText(getApplicationContext(), "History Log", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "יומן היסטוריה", Toast.LENGTH_LONG).show();
                 MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
                 intent = new Intent(SettingsActivity.this, History_Log_1.class);
                 startActivity(intent);
@@ -235,7 +235,7 @@ public class SettingsActivity extends AppCompatActivity {
                 break;
 
             case R.id.menu_settings_consumption:
-                Toast.makeText(getApplicationContext(), "Flow Rate", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "קצב זרימה", Toast.LENGTH_LONG).show();
 
                 MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
                 intent = new Intent(SettingsActivity.this, ConsumptionActivity.class);

@@ -88,7 +88,7 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
         public void run() {
             MeganetInstances.getInstance().GetMeganetEngine().Disconnect();
             MeganetInstances.getInstance().GetMeganetEngine().reset_timerCount();
-            toast.makeText(getApplicationContext(), "Lost connection!", Toast.LENGTH_LONG).show();
+            toast.makeText(getApplicationContext(), "החיבור אבד!", Toast.LENGTH_LONG).show();
 
             synchronized(this)
             {
@@ -109,13 +109,13 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
                 start += length;
                 if (start + length > total)
                     len1 = total - start + 1;
-                toast.makeText(getApplicationContext(), "Getting log..", Toast.LENGTH_SHORT).show();
+                toast.makeText(getApplicationContext(), "מקבל...", Toast.LENGTH_SHORT).show();
                 MeganetInstances.getInstance().GetMeganetEngine().GetLog(input_num, start, len1, false);
             }
             else
             {
                 if (!send_request) { // If we ask all of reads and didn't receive all, we need to send request for the missing reads
-                    toast.makeText(getApplicationContext(), "Finalizing Process ..", Toast.LENGTH_LONG).show();
+                    toast.makeText(getApplicationContext(), "מסיים תהליך...", Toast.LENGTH_LONG).show();
                     send_request = true;
                 }
                 send_requests();
@@ -220,7 +220,7 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
             @Override
             public void onClick(View v) {
                 MeganetInstances.getInstance().GetMeganetEngine().Prompt(MeganetEngine.ePromptType.TEN_CHR_PAIRING, PromptConvert("E"));
-                toast.makeText(getApplicationContext(),"Waiting For MTU Response",Toast.LENGTH_LONG).show();
+                toast.makeText(getApplicationContext(),"מחכה לתגובת המכשיר",Toast.LENGTH_LONG).show();
                 CommonSettingsData data = new CommonSettingsData(6, "last_programm_prompt_type", PromptConvert("E"));
                 MeganetInstances.getInstance().GetMeganetDb().updateProperty(data);
             }
@@ -270,15 +270,15 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
     private void PairingDialog()
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(this); // Alert dialog for connecting to device
-        builder.setMessage("Connect to MTU ID: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress() + " ?")
+        builder.setMessage("התחבר עם מכשיר: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress() + " ?")
                 .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setPositiveButton("כן", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        toast.makeText(getApplicationContext(), "Unit Paired",
+                        toast.makeText(getApplicationContext(), "היחידה התחברה",
                         Toast.LENGTH_SHORT).show();
 
                         promptBtn.setVisibility(View.INVISIBLE);
-                        tv1.setText("Connected to MTU: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress());
+                        tv1.setText("התחבר עם מכשיר: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress());
                         int ndevice = Integer.decode("0x" +  MeganetInstances.getInstance().GetMeganetEngine().GetNdevice())-1;
                         if(ndevice == 45) {
                             getLogBtn.setVisibility(View.VISIBLE);
@@ -314,10 +314,10 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
                         //_pairDialogIsON = false;
                     }
                 })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                .setNegativeButton("לא", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // some code if you want
-                        toast.makeText(getApplicationContext(), "UNPAIR FROM UNIT", Toast.LENGTH_SHORT).show();
+                        toast.makeText(getApplicationContext(), "ההתחברות ליחידה התבטלה", Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
                         _pairDialogIsON = false;
                         MeganetInstances.getInstance().GetMeganetEngine().Disconnect();
@@ -457,14 +457,14 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
                         FileOutputStream out = new FileOutputStream(file);
                         out.write(dataFile.getBytes());
                         out.close();
-                        toast.makeText(getApplicationContext(), "File saved in saved_logs folder" , Toast.LENGTH_LONG).show();
+                        toast.makeText(getApplicationContext(), "הקובץ נשמר בתיקיית saved_logs באחסון החיצוני" , Toast.LENGTH_LONG).show();
 
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
 
                 } else {
-                    toast.makeText(getApplicationContext(), "Cannot save file on external storage!",Toast.LENGTH_LONG).show();
+                    toast.makeText(getApplicationContext(), "אינו יכול לשמור את הקובץ באחסון החיצוני!",Toast.LENGTH_LONG).show();
                 }
                 finish();
                 /*
@@ -524,7 +524,7 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
         if( MeganetInstances.getInstance().GetMeganetEngine().get_timerCount() >= 5)// If we didn't success to receive the last read after 5 attempts, we disconnect.
         {
             MeganetInstances.getInstance().GetMeganetEngine().reset_timerCount();
-            toast.makeText(getApplicationContext(), "Lost Connection!", Toast.LENGTH_SHORT).show();
+            toast.makeText(getApplicationContext(), "החיבור אבד!", Toast.LENGTH_SHORT).show();
             MeganetInstances.getInstance().GetMeganetEngine().Disconnect();
             finish();
         }
@@ -532,7 +532,7 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
             MeganetInstances.getInstance().GetMeganetEngine().reset_timerCount();
             int seconds = (int) ConvertByteToNumber(Arrays.copyOfRange(dataArr_prm, 7, 9)); // get the number of second that pass from the last read
             last_read.add(Calendar.SECOND, -seconds); // calculate the date of the last read
-            toast.makeText(getApplicationContext(), "Getting log..", Toast.LENGTH_SHORT).show();
+            toast.makeText(getApplicationContext(), "מקבל...", Toast.LENGTH_SHORT).show();
             MeganetInstances.getInstance().GetMeganetEngine().GetLog(input_num, start, length, false); // send get log
         }
     }
@@ -576,7 +576,7 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
         {
             MeganetInstances.getInstance().GetMeganetEngine().reset_timerCount();
             MeganetInstances.getInstance().GetMeganetEngine().Disconnect();
-            toast.makeText(getApplicationContext(), "Lost Connection!", Toast.LENGTH_SHORT).show();
+            toast.makeText(getApplicationContext(), "החיבור אבד!", Toast.LENGTH_SHORT).show();
             finish();
         }
         else {

@@ -25,7 +25,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CLOSE APP"
+            android:text="סגור"
             android:id="@+id/buttonCloseApp"
             android:textColor="@color/colorButtonText"
             android:background="@color/colorButtonBackground"
@@ -44,7 +44,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PAIR"
+            android:text="התחבר"
             android:id="@+id/buttonPair"
             android:textColor="@color/colorButtonText"
             android:background="@color/colorButtonBackground"
@@ -66,7 +66,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Paired: SPP"
+            android:text="התחבר ל- SPP"
+            android:gravity="right"
             android:id="@+id/textViewStatus"
             android:layout_above="@+id/spinner"
             android:layout_alignParentStart="true"

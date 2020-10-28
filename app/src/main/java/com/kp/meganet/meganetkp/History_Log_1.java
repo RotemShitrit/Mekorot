@@ -141,7 +141,7 @@ public class History_Log_1 extends AppCompatActivity {
                 intent = new Intent(History_Log_1.this, ReadsActivity.class);
                 startActivity(intent);
                 break;
-*/
+
             case R.id.menu_getlog_ranman:
                 super.onBackPressed();
                 Toast.makeText(getApplicationContext(), "RANMAN RSSI", Toast.LENGTH_LONG).show();
@@ -171,7 +171,7 @@ public class History_Log_1 extends AppCompatActivity {
 */
             case R.id.menu_getlog_settings:
                 super.onBackPressed();
-                Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "הגדרות", Toast.LENGTH_LONG).show();
 
                 MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
                 intent = new Intent(History_Log_1.this, SettingsActivity.class);
@@ -181,7 +181,7 @@ public class History_Log_1 extends AppCompatActivity {
 
             case R.id.menu_getlog_ftp:
                 super.onBackPressed();
-                Toast.makeText(getApplicationContext(), "FTP", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "הגדרות FTP", Toast.LENGTH_LONG).show();
 
                 MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
                 intent = new Intent(History_Log_1.this, FTP_Controll.class);
@@ -199,7 +199,7 @@ public class History_Log_1 extends AppCompatActivity {
                 break;
 */
             case R.id.menu_getlog_consumption:
-                Toast.makeText(getApplicationContext(), "Flow Rate", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "קצב זרימה", Toast.LENGTH_LONG).show();
 
                 MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
                 intent = new Intent(History_Log_1.this, ConsumptionActivity.class);
@@ -339,7 +339,7 @@ public class History_Log_1 extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             if (!connect) { // If there is a problem with the writing file to FTP or with the connection to FTP
                 AlertDialog.Builder dialog = new AlertDialog.Builder(History_Log_1.this);
-                dialog.setTitle("Problem with FTP connection!");
+                dialog.setTitle("בעיה בהתחברות ל-FTP!");
                 dialog.setCancelable(true);
                 dialog.setPositiveButton("OK",
                         new DialogInterface.OnClickListener() {
@@ -353,7 +353,7 @@ public class History_Log_1 extends AppCompatActivity {
                 alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED);
             }
             else {
-                Toast.makeText(getApplicationContext(), "Uploaded to FTP!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "הועלה ל-FTP!", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(History_Log_1.this, History_Log_4.class);
                 startActivity(intent);
             }

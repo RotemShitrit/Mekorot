@@ -6,13 +6,13 @@
         <!-- <item
             android:id="@+id/nav_field_verif_1"
             android:icon="@drawable/ic_field_verif"
-            android:title="Field Verification" /> -->
+            android:title="Field Verification" />
         <item
             android:id="@+id/nav_rssi"
             android:icon="@drawable/ic_ranman"
             android:title="RANMAN – Online RSSI" />
 
-        <!-- <item
+         <item
             android:id="@+id/nav_read_meter"
             android:icon="@drawable/ic_read_meter"
             android:title="Read Meter" />
@@ -29,21 +29,21 @@
         <item
             android:id="@+id/nav_log"
             android:icon="@drawable/ic_history"
-            android:title="History Log" />
+            android:title="יומן היסטוריה" />
 
         <item
             android:id="@+id/nav_consumption"
             android:layout_height="wrap_content"
             android:icon="@drawable/ic_consumption"
-            android:title="Flow Rate" />
+            android:title="קצב זרימה" />
 
     </group>
-    <item android:title="Advanced">
+    <item android:title="מתקדם">
         <menu>
             <item
                 android:id="@+id/nav_ftp"
                 android:icon="@drawable/ic_ftp"
-                android:title="FTP" />
+                android:title="הגדרות FTP" />
             <!-- <item
                 android:id="@+id/nav_programm"
                 android:icon="@drawable/ic_program"
@@ -51,7 +51,7 @@
             <item
                 android:id="@+id/nav_settings"
                 android:icon="@drawable/ic_settings"
-                android:title="Settings" />
+                android:title="הגדרות" />
         </menu>
     </item>
 

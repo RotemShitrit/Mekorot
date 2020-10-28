@@ -42,7 +42,7 @@
        </activity>
        <activity
            android:name=".SettingsActivity"
-           android:label="Settings"
+           android:label="הגדרות"
            android:screenOrientation="portrait" />
        <activity
            android:name=".ProgrammActivity"
@@ -63,11 +63,11 @@
            android:screenOrientation="portrait" />
        <activity
            android:name=".FTP_Controll"
-           android:label="FTP Controll"
+           android:label="FTP הגדרות"
            android:screenOrientation="portrait" />
        <activity
            android:name=".History_Log_1"
-           android:label="History Log"
+           android:label="יומן היסטוריה"
            android:screenOrientation="portrait" />
        <activity
            android:name=".History_Log_1_1"
@@ -75,7 +75,7 @@
            android:screenOrientation="portrait" />
        <activity
            android:name=".History_Log_2"
-           android:label="History Log"
+           android:label="יומן היסטוריה"
            android:screenOrientation="portrait" />
        <activity
            android:name=".History_Log_3"
@@ -139,7 +139,7 @@
             android:label="Choose device"
             android:screenOrientation="portrait"/>
         <activity android:name=".ConsumptionActivity"
-            android:label="Flow Rate"
+            android:label="קצב זרימה"
             android:screenOrientation="portrait"/>
         <activity android:name=".Ber1Activity"
             android:label="Ber1"

@@ -60,7 +60,6 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         _pairDialogIsON = false;
-        setTitle("Flow Rate");
         getConsumptionBtn = (Button) findViewById(R.id.getConsuptBtn);
         connectBtn = (Button) findViewById(R.id.btnConnect);
         disconnectBtn = (Button) findViewById(R.id.btnDisconnect);
@@ -142,7 +141,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
                     dataTextView.setVisibility(View.INVISIBLE);
                     unitTV.setVisibility(View.INVISIBLE);
 
-                    connectTextView.setText("Not Connected");
+                    connectTextView.setText("לא מחובר");
                     _timerFlag = false;
                     _timerCount = 0;
                 }
@@ -331,7 +330,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
                         {
                             Toast.makeText(getApplicationContext(), _toastMessageToDisplay,
                                     Toast.LENGTH_SHORT).show();
-                            connectTextView.setText("Not Connected");
+                            connectTextView.setText("לא מחובר");
                             //powerOffButton.setVisibility(View.INVISIBLE);
 
                             getConsumptionBtn.setVisibility(View.INVISIBLE);
@@ -412,15 +411,15 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
 
     private void PairingDialot() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Connect to MTU ID: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress() + " ?")
+        builder.setMessage("התחבר עם מכשיר: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress() + " ?")
                 .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setPositiveButton("כן", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(getApplicationContext(), "Unit Paired",
+                        Toast.makeText(getApplicationContext(), "היחידה התחברה",
                                 Toast.LENGTH_SHORT).show();
                         //powerOffButton.setVisibility(View.VISIBLE);
                         MeganetInstances.getInstance().GetMeganetEngine().PairingDevice(true, false);
-                        connectTextView.setText("Connected To MTU: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress());
+                        connectTextView.setText("התחבר עם מכשיר: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress());
                         dialog.dismiss();
 
                         getConsumptionBtn.setVisibility(View.VISIBLE);
@@ -436,12 +435,12 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
                         _pairDialogIsON = false;
                     }
                 })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                .setNegativeButton("לא", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // some code if you want
-                        Toast.makeText(getApplicationContext(), "UNPAIR FROM UNIT",
+                        Toast.makeText(getApplicationContext(), "ההתחברות ליחידה התבטלה",
                                 Toast.LENGTH_SHORT).show();
-                        connectTextView.setText("Not Connected");
+                        connectTextView.setText("לא מחובר");
                         MeganetInstances.getInstance().GetMeganetEngine().Disconnect();
                         dialog.dismiss();
                         _pairDialogIsON = false;
@@ -484,7 +483,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
                 intent = new Intent(ConsumptionActivity.this, ReadsActivity.class);
                 startActivity(intent);
                 break;
-*/
+
             case R.id.menu_consumption_ranman:
                 super.onBackPressed();
                 Toast.makeText(getApplicationContext(), "RANMAN RSSI", Toast.LENGTH_LONG).show();
@@ -493,7 +492,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
                     url = "http://" + url;
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
                 break;
-/*
+
             case R.id.menu_consumption_read_meter:
                 super.onBackPressed();
                 Toast.makeText(getApplicationContext(), "Read Meter", Toast.LENGTH_LONG).show();
@@ -505,7 +504,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
 */
             case R.id.menu_consumption_ftp:
                 super.onBackPressed();
-                Toast.makeText(getApplicationContext(), "FTP", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "הגדרות FTP", Toast.LENGTH_LONG).show();
 
                 MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
                 intent = new Intent(ConsumptionActivity.this, FTP_Controll.class);
@@ -513,7 +512,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
                 break;
 
             case R.id.menu_consumption_getlog:
-                Toast.makeText(getApplicationContext(), "History Log", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "יומן היסטוריה", Toast.LENGTH_LONG).show();
                 MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
                 intent = new Intent(ConsumptionActivity.this, History_Log_1.class);
                 startActivity(intent);
@@ -521,7 +520,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
 
             case R.id.menu_consumption_settings:
                 super.onBackPressed();
-                Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "הגדרות", Toast.LENGTH_LONG).show();
 
                 MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
                 intent = new Intent(ConsumptionActivity.this, SettingsActivity.class);

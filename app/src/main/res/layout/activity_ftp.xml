@@ -36,7 +36,7 @@
         android:layout_below="@+id/IP_FTP"
         android:layout_alignEnd="@+id/editTextRanManURL"
         android:layout_alignParentStart="true"
-        android:text="User FTP"
+        android:text="משתמש FTP"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp" />
 
@@ -60,7 +60,7 @@
         android:layout_below="@+id/USER_FTP"
         android:layout_alignEnd="@+id/editTextRanManURL"
         android:layout_alignParentStart="true"
-        android:text="Password FTP"
+        android:text="ססמא FTP"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp" />
 
@@ -108,8 +108,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="140dp"
-        android:text="Save"
-        android:textColor="@android:color/black" />
+        android:text="שמור"
+        android:textColor="@color/colorButtonText" />
 
 
     <Button
@@ -119,7 +119,7 @@
         android:layout_below="@+id/buttonSave"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:text="Back"
-        android:textColor="@android:color/black" />
+        android:text="חזרה"
+        android:textColor="@color/colorButtonText" />
 
 </RelativeLayout>

@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools" tools:context=".ConsumptionActivity">
 
     <!-- <item android:id="@+id/menu_consumption_field_verif" android:title="Field Verification"
-        android:orderInCategory="100" app:showAsAction="never" />  -->
+        android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/menu_consumption_ranman" android:title="RANMAN - Online RSSI"
         android:orderInCategory="100" app:showAsAction="never" />
-    <!-- <item android:id="@+id/menu_consumption_rdm" android:title="RDM Control"
+     <item android:id="@+id/menu_consumption_rdm" android:title="RDM Control"
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/menu_consumption_read_meter" android:title="Read Meter"
         android:orderInCategory="100" app:showAsAction="never" /> -->
-    <item android:id="@+id/menu_consumption_ftp" android:title="FTP"
+    <item android:id="@+id/menu_consumption_ftp" android:title="הגדרות FTP"
         android:orderInCategory="100" app:showAsAction="never" />
-    <item android:id="@+id/menu_consumption_getlog" android:title="History Log"
+    <item android:id="@+id/menu_consumption_getlog" android:title="יומן היסטוריה"
         android:orderInCategory="100" app:showAsAction="never" />
     <!-- <item android:id="@+id/menu_consumption_program" android:title="Program"
         android:orderInCategory="100" app:showAsAction="never" /> -->
-    <item android:id="@+id/menu_consumption_settings" android:title="Settings"
+    <item android:id="@+id/menu_consumption_settings" android:title="הגדרות"
         android:orderInCategory="100" app:showAsAction="never" />
 
 </menu>

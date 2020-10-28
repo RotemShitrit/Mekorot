@@ -89,9 +89,9 @@ public class MainActivity extends AppCompatActivity
 
         if(myBluetoothAdapter == null)
         {
-            statusTextView.setText("Status: Bluetooth is not supported");
+            statusTextView.setText("סטטוס: בלוטוס אינו נתמך");
 
-            Toast.makeText(getApplicationContext(), "Your device does not support Bluetooth",
+            Toast.makeText(getApplicationContext(), "המכשיר שלך אינו תומך בבלוטוס",
                     Toast.LENGTH_LONG).show();
 
             bluetoothSwitch.setEnabled(false);
@@ -143,9 +143,9 @@ public class MainActivity extends AppCompatActivity
                         macAddr = pairsList.get(pairsSpinner.getSelectedItem().toString());
                         if (Connect(v, macAddr)) {
 
-                            Toast.makeText(getApplicationContext(), "Paired with: " + pairsSpinner.getSelectedItem().toString(),
+                            Toast.makeText(getApplicationContext(), "מחובר ל: " + pairsSpinner.getSelectedItem().toString(),
                                     Toast.LENGTH_SHORT).show();
-                            statusTextView.setText("Paired with: " + pairsSpinner.getSelectedItem().toString());
+                            statusTextView.setText("מחובר ל: " + pairsSpinner.getSelectedItem().toString());
 
                             CommonSettingsData data = new CommonSettingsData(5, "last_bluetooth_pair", pairsSpinner.getSelectedItem().toString());
 
@@ -154,16 +154,16 @@ public class MainActivity extends AppCompatActivity
                             pairButtorn.setEnabled(false);
                         } else {
 
-                            Toast.makeText(getApplicationContext(), "Can't pair with: " + pairsSpinner.getSelectedItem().toString(),
+                            Toast.makeText(getApplicationContext(), "אינו יכול להתחבר ל: " + pairsSpinner.getSelectedItem().toString(),
                                     Toast.LENGTH_SHORT).show();
-                            statusTextView.setText("Can't pair with: " + pairsSpinner.getSelectedItem().toString());
+                            statusTextView.setText("אינו יכול להתחבר ל: " + pairsSpinner.getSelectedItem().toString());
                             isPaired = false;
 
                         }
                     } else {
-                        Toast.makeText(getApplicationContext(), "Bluetooth not enabled",
+                        Toast.makeText(getApplicationContext(), "בלוטוס אינו מופעל",
                                 Toast.LENGTH_SHORT).show();
-                        statusTextView.setText("Bluetooth is OFF");
+                        statusTextView.setText("בלוטוס כבוי");
                         isPaired = false;
                     }
                 }
@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             if (this.lastBackPressTime < System.currentTimeMillis() - 4000) {
-                toast = Toast.makeText(this, "Press back again to close this app", Toast.LENGTH_LONG);
+                toast = Toast.makeText(this, "לחץ שוב על מנת לצאת מהאפליקציה", Toast.LENGTH_LONG);
                 toast.show();
                 this.lastBackPressTime = System.currentTimeMillis();
             } else {
@@ -208,7 +208,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement - getResources().getString(R.string.title_activity)
         if (id == R.id.action_about) {
-            Toast.makeText(getApplicationContext(), getResources().getString(R.string.app_name) + ": Version: " + getResources().getString(R.string.app_version),
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.app_name) + " גירסא " + getResources().getString(R.string.app_version),
                     Toast.LENGTH_LONG).show();
             return true;
         }
@@ -224,17 +224,20 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         int a = 0;
 
-        if (id == R.id.nav_rssi) {
+        /*if (id == R.id.nav_rssi) {
             OpenNewActivity(4);
         }
-        else if(id == R.id.nav_ftp) {
+        else*/
+
+        if(id == R.id.nav_ftp) {
+
             OpenNewActivity(9);
         }
         else
         {
             if(!btSupport)
             {
-                Toast.makeText(getApplicationContext(), "Your device does not support Bluetooth",
+                Toast.makeText(getApplicationContext(), "המכשיר שלך אינו תומך בבלוטוס",
                         Toast.LENGTH_LONG).show();
 
                 DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -244,7 +247,7 @@ public class MainActivity extends AppCompatActivity
             }
             if (!isPaired)
             {
-                Toast.makeText(getApplicationContext(), "Please pair RSINT unit before proceeding",
+                Toast.makeText(getApplicationContext(), "יש להתחבר ליחידת RSINT כדי שתוכל להמשיך",
                         Toast.LENGTH_LONG).show();
 
                 DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -295,7 +298,7 @@ public class MainActivity extends AppCompatActivity
 
         if(MeganetInstances.getInstance().GetMeganetEngine().GetStatus() == BTengine.btMode.ON)
         {
-            statusTextView.setText("Status: Bluetooth is ON");
+            statusTextView.setText("סטטוס: הבלוטוס דולק");
 
             pairsList = MeganetInstances.getInstance().GetMeganetEngine().GetDeviceList();
 
@@ -317,7 +320,7 @@ public class MainActivity extends AppCompatActivity
         {
             pairButtorn.setEnabled(false);
 
-            statusTextView.setText("Status: Bluetooth is OFF, please turn ON Bluetooth");
+            statusTextView.setText("סטטוס: הבלוטוס כבוי, נא להדליק את הבלוטוס!");
             if(pairsSpinner != null)
                 pairsSpinner.setAdapter(null);
             bluetoothSwitch.setChecked(false);
@@ -325,7 +328,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public boolean Connect(View v, String address_prm) {
-        Toast.makeText(getApplicationContext(), "Connecting",
+        Toast.makeText(getApplicationContext(), "מתחבר...",
                 Toast.LENGTH_SHORT).show();
 
         boolean result = MeganetInstances.getInstance().GetMeganetEngine().ConnectTo(address_prm);
@@ -391,7 +394,7 @@ public class MainActivity extends AppCompatActivity
                 // TODO Something
                 break;
             case 6:
-                Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "הגדרות", Toast.LENGTH_LONG).show();
 
                 MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
                 intent = new Intent(MainActivity.this, SettingsActivity.class);
@@ -421,21 +424,21 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case 9:
-                Toast.makeText(getApplicationContext(), "FTP", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "הגדרות FTP", Toast.LENGTH_LONG).show();
                 intent = new Intent(MainActivity.this, FTP_Controll.class);
                 startActivity(intent);
                 // TODO Something
                 break;
 
             case 10:
-                Toast.makeText(getApplicationContext(), "History Log", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "יומן היסטוריה", Toast.LENGTH_LONG).show();
                 intent = new Intent(MainActivity.this, History_Log_1.class);
                 startActivity(intent);
                 // TODO Something
                 break;
 
             case 11:
-                Toast.makeText(getApplicationContext(), "Flow Rate", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "קצב זרימה", Toast.LENGTH_LONG).show();
                 intent = new Intent(MainActivity.this, ConsumptionActivity.class);
                 startActivity(intent);
                 // TODO Something
@@ -446,11 +449,11 @@ public class MainActivity extends AppCompatActivity
     private void ExitApplication()
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Close App?")
+        builder.setMessage("לסגור את האפליקציה?")
                 .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setPositiveButton("כן", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(getApplicationContext(), "Close App",
+                        Toast.makeText(getApplicationContext(), "סוגר אפליקציה",
                                 Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
                         moveTaskToBack(true);
@@ -460,7 +463,7 @@ public class MainActivity extends AppCompatActivity
 
                     }
                 })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                .setNegativeButton("לא", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // some code if you want
                         dialog.dismiss();

@@ -14,7 +14,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Connect"
+        android:text="התחבר"
         android:id="@+id/promptbtn"
         android:layout_marginStart="5dp"
         android:layout_alignParentStart="true"
@@ -31,7 +31,7 @@
         android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
-        android:text="Please click CONNECT and swipe a magnet on the MTU"
+        android:text="יש ללחוץ על כפתור התחבר ולהעביר מגנט על המכשיר"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -45,7 +45,7 @@
         android:layout_marginTop="30dp"
         android:textColor="@color/colorButtonText"
         android:textSize="20sp"
-        android:text="Get Log" />
+        android:text="קבל יומן" />
 
     <TextView
         android:id="@+id/textView16"
@@ -55,7 +55,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="150dp"
         android:layout_marginEnd="-229dp"
-        android:text="Choose an input number:"
+        android:text="בחר מספר קלט:"
         android:textSize="18sp" />
 
     <!--

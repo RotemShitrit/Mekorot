@@ -58,7 +58,7 @@ public class FTP_Controll extends AppCompatActivity {
                 editor.putInt("port",  Integer.valueOf(ftpPort.getText().toString())) ;
                 editor.apply();
 
-                Toast.makeText(getApplicationContext(), "FTP details saved!",
+                Toast.makeText(getApplicationContext(), "פרטי FTP נשמרו!",
                         Toast.LENGTH_SHORT).show();
             }
         });

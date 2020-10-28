@@ -5,20 +5,20 @@
     tools:context=".History_Log_1">
 
     <!-- <item android:id="@+id/menu_getlog_field_verif" android:title="Field Verification"
-        android:orderInCategory="100" app:showAsAction="never" /> -->
+        android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/menu_getlog_ranman" android:title="RANMAN - Online RSSI"
         android:orderInCategory="100" app:showAsAction="never" />
-    <!-- <item android:id="@+id/menu_getlog_read_meter" android:title="Read Meter"
+     <item android:id="@+id/menu_getlog_read_meter" android:title="Read Meter"
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/menu_getlog_rdm" android:title="RDM Control"
         android:orderInCategory="100" app:showAsAction="never" /> -->
-    <item android:id="@+id/menu_getlog_consumption" android:title="Flow Rate"
+    <item android:id="@+id/menu_getlog_consumption" android:title="קצב זרימה"
         android:orderInCategory="100" app:showAsAction="never" />
-    <item android:id="@+id/menu_getlog_ftp" android:title="FTP"
+    <item android:id="@+id/menu_getlog_ftp" android:title="הגדרות FTP"
         android:orderInCategory="100" app:showAsAction="never" />
     <!-- <item android:id="@+id/menu_getlog_program" android:title="Program"
         android:orderInCategory="100" app:showAsAction="never" /> -->
-    <item android:id="@+id/menu_getlog_settings" android:title="Settings"
+    <item android:id="@+id/menu_getlog_settings" android:title="הגדרות"
         android:orderInCategory="100" app:showAsAction="never" />
 
 </menu>

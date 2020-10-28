@@ -48,7 +48,8 @@
         android:text="RANMAN URL"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="13sp" />
+        android:textSize="13sp"
+        android:visibility="invisible"/>
 
     <EditText
         android:id="@+id/editTextRanManURL"
@@ -59,7 +60,8 @@
         android:layout_alignParentStart="true"
         android:inputType="textWebEditText"
         android:text="http://www.google.com"
-        android:textSize="11sp" />
+        android:textSize="11sp"
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/textView5"
@@ -198,7 +200,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:text="SAVE AND CLOSE"
+        android:text="שמור וסגור"
         android:textColor="@color/colorButtonText" />
 
     <TextView
@@ -208,7 +210,7 @@
         android:layout_above="@+id/buttonApply"
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/textViewRSNTver"
-        android:text="RSINT Version"
+        android:text="RSINT גירסת"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
@@ -218,7 +220,7 @@
         android:layout_above="@+id/textView"
         android:layout_alignEnd="@+id/textView"
         android:layout_alignParentStart="true"
-        android:text="Application Version"
+        android:text="גירסת אפליקציה"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <CheckBox
@@ -230,7 +232,7 @@
         android:layout_alignParentStart="true"
         android:buttonTint="@color/colorButtonText"
         android:checked="true"
-        android:text="Use KPACK"
+        android:text="שימוש ב- KPACK"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="13sp" />
 
