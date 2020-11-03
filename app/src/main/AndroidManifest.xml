@@ -20,7 +20,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
-
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
@@ -36,13 +35,11 @@
            android:theme="@style/AppTheme.NoActionBar">
            <intent-filter>
                <action android:name="android.intent.action.MAIN" />
-
                <category android:name="android.intent.category.LAUNCHER" />
            </intent-filter>
        </activity>
        <activity
            android:name=".SettingsActivity"
-           android:label="הגדרות"
            android:screenOrientation="portrait" />
        <activity
            android:name=".ProgrammActivity"
@@ -63,11 +60,9 @@
            android:screenOrientation="portrait" />
        <activity
            android:name=".FTP_Controll"
-           android:label="FTP הגדרות"
            android:screenOrientation="portrait" />
        <activity
            android:name=".History_Log_1"
-           android:label="יומן היסטוריה"
            android:screenOrientation="portrait" />
        <activity
            android:name=".History_Log_1_1"
@@ -75,7 +70,6 @@
            android:screenOrientation="portrait" />
        <activity
            android:name=".History_Log_2"
-           android:label="יומן היסטוריה"
            android:screenOrientation="portrait" />
        <activity
            android:name=".History_Log_3"
@@ -139,7 +133,6 @@
             android:label="Choose device"
             android:screenOrientation="portrait"/>
         <activity android:name=".ConsumptionActivity"
-            android:label="קצב זרימה"
             android:screenOrientation="portrait"/>
         <activity android:name=".Ber1Activity"
             android:label="Ber1"

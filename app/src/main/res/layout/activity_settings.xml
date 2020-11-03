@@ -4,9 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingStart="@dimen/activity_horizontal_margin"
+    android:paddingEnd="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:layoutDirection="rtl"
     tools:context="com.kp.meganet.meganetkp.SettingsActivity"
     android:background="@color/colorAccent"
     android:focusable="true"
@@ -20,6 +21,9 @@
         android:layout_alignEnd="@+id/editTextHHID"
         android:layout_alignParentStart="true"
         android:text="HH ID"
+        android:layout_marginEnd="5dp"
+        android:layoutDirection="rtl"
+        android:gravity="end"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="13sp" />
@@ -34,6 +38,7 @@
     android:digits="0123456789"
     android:inputType="number"
     android:text="02233"
+    android:layoutDirection="rtl"
     android:textColorHighlight="@color/primary_material_dark"
     android:textCursorDrawable="@drawable/cursor_drawable"
     android:textSize="11sp" />
@@ -181,6 +186,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/textViewRSNTver"
         android:layout_alignParentEnd="true"
+        android:layout_marginBottom="5dp"
         android:text="1.1"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -190,6 +196,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonApply"
         android:layout_alignEnd="@+id/buttonApply"
+        android:layout_marginBottom="5dp"
         android:text="1.08"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -209,8 +216,10 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonApply"
         android:layout_alignParentStart="true"
+        android:layout_marginBottom="5dp"
         android:layout_toStartOf="@+id/textViewRSNTver"
         android:text="RSINT גירסת"
+        android:gravity="end"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
@@ -218,8 +227,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView"
-        android:layout_alignEnd="@+id/textView"
         android:layout_alignParentStart="true"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toStartOf="@+id/textViewAppver"
+        android:layout_toEndOf="@+id/textViewAppver"
         android:text="גירסת אפליקציה"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -228,8 +240,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textViewAppver"
-        android:layout_alignEnd="@+id/textViewAppver"
         android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
         android:buttonTint="@color/colorButtonText"
         android:checked="true"
         android:text="שימוש ב- KPACK"

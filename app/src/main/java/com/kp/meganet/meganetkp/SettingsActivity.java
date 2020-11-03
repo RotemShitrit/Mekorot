@@ -1,5 +1,7 @@
 package com.kp.meganet.meganetkp;
 
+import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
@@ -27,11 +29,20 @@ public class SettingsActivity extends AppCompatActivity {
     Button applyButton;
     CheckBox kpackCheckBox;
 
+    @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar_title);
+
+        View v = getSupportActionBar().getCustomView();
+        TextView titleTxtView = (TextView) v.findViewById(R.id.mytext);
+        titleTxtView.setText("הגדרות");
+
 
         hhidEditText = (EditText)findViewById(R.id.editTextHHID);
         fieldVerifFreq1EditText = (EditText)findViewById(R.id.editTextFieldVerifFreq1);
@@ -156,11 +167,11 @@ public class SettingsActivity extends AppCompatActivity {
         });
     }
 
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_settings, menu);
-
         return true;
     }
 
@@ -172,7 +183,7 @@ public class SettingsActivity extends AppCompatActivity {
         int id = item.getItemId();
         Intent intent;
         switch (item.getItemId()) {
-/*
+
             case R.id.menu_settings_field_verif:
                 super.onBackPressed();
                 MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.FIELD_VERIF_1);
@@ -188,7 +199,7 @@ public class SettingsActivity extends AppCompatActivity {
                     url = "http://" + url;
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
                 break;
-/*
+
             case R.id.menu_settings_read_meter:
                 super.onBackPressed();
                 Toast.makeText(getApplicationContext(), "Read Meter", Toast.LENGTH_LONG).show();
@@ -206,7 +217,7 @@ public class SettingsActivity extends AppCompatActivity {
                 intent = new Intent(SettingsActivity.this, RDM_Controll.class);
                 startActivity(intent);
                 break;
-*/
+
             case R.id.menu_settings_ftp:
                 super.onBackPressed();
                 Toast.makeText(getApplicationContext(), "הגדרות FTP", Toast.LENGTH_LONG).show();
@@ -217,7 +228,7 @@ public class SettingsActivity extends AppCompatActivity {
                 // TODO Something
                 break;
 
-/*
+
             case R.id.menu_settings_program:
                 Toast.makeText(getApplicationContext(), "Programming", Toast.LENGTH_LONG).show();
                 MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
@@ -225,7 +236,7 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(intent);
                 // TODO Something
                 break;
-*/
+
             case R.id.menu_settings_getlog:
                 Toast.makeText(getApplicationContext(), "יומן היסטוריה", Toast.LENGTH_LONG).show();
                 MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
@@ -245,4 +256,6 @@ public class SettingsActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+   */
 }

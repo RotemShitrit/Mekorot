@@ -1,5 +1,6 @@
 package com.kp.meganet.meganetkp;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 //import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -158,6 +159,8 @@ public class PulseActivity extends AppCompatActivity implements iPulseCallback{
         else
             _toastMessageToDisplay = "Disconnect successfully ";
 
+        MeganetInstances.getInstance().GetMeganetEngine().MeterPowerOff();
+
         this.runOnUiThread(new Runnable() {
             public void run() {
                 // Access/update UI here
@@ -165,5 +168,12 @@ public class PulseActivity extends AppCompatActivity implements iPulseCallback{
                         Toast.LENGTH_SHORT).show();
             }
         });
+
+        Intent intent;
+        MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
+        MeganetInstances.getInstance().GetMeganetEngine().SetCurrentProgrammType(6);
+        intent = new Intent(this, ProgrammActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

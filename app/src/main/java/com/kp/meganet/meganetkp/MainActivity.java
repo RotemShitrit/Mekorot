@@ -1,5 +1,7 @@
 package com.kp.meganet.meganetkp;
 
+import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity
     private Toast toast;
     private long lastBackPressTime = 0;
 
+    @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +65,9 @@ public class MainActivity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar_title);
 
         btSupport = false;
         isPaired = false;
@@ -74,7 +80,6 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        //ADD DISABLE TO ITEM WORK ORDER
 
 
         exitButton = (Button) findViewById(R.id.buttonCloseApp);

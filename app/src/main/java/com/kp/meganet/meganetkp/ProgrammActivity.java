@@ -274,6 +274,7 @@ public class ProgrammActivity extends AppCompatActivity implements iCallback{
             public void onClick(View v) {
                 Intent intent = new Intent(ProgrammActivity.this, PulseActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 

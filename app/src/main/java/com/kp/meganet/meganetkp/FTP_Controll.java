@@ -1,5 +1,7 @@
 package com.kp.meganet.meganetkp;
 
+import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -7,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class FTP_Controll extends AppCompatActivity {
@@ -22,10 +25,18 @@ public class FTP_Controll extends AppCompatActivity {
     Button ftpConnecting;
     Button ftpBack;
 
+    @SuppressLint("WrongConstant")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ftp);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar_title);
+
+        View v = getSupportActionBar().getCustomView();
+        TextView titleTxtView = (TextView) v.findViewById(R.id.mytext);
+        titleTxtView.setText("הגדרות FTP");
 
         ftpIP = (EditText) findViewById(R.id.IP_FTP);
         ftpUser = (EditText) findViewById(R.id.USER_FTP);

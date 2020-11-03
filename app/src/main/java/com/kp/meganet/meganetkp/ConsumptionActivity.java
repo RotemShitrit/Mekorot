@@ -1,5 +1,7 @@
 package com.kp.meganet.meganetkp;
 
+import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,13 +38,13 @@ import static java.lang.Math.pow;
 
 public class ConsumptionActivity extends AppCompatActivity implements iCallback {
     private String _toastMessageToDisplay;
-    private boolean _pairDialogIsON;
-
+    private boolean _pairDialogIsON, flagdouble;
+    private int cntDouble;
     private Button connectBtn, disconnectBtn, getConsumptionBtn;
-    private TextView dataTextView, connectTextView, inputTV, unitTV, registerTypeTV;
+    private TextView dataTextView, connectTextView, inputTV, unitTV, registerTypeTV, data1TV, data2TV, unit1TV, unit2TV;
     private RadioGroup dataConvert;
     private Spinner inputSpinner,registerSpinner;
-
+    private ConstraintLayout constraintLayout1;
     private Timer _downCountTimer;
     private Integer _timerCount;
     private boolean _timerFlag = false;
@@ -53,11 +56,19 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
      */
     private GoogleApiClient client;
 
+    @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consumption);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar_title);
+
+        View v = getSupportActionBar().getCustomView();
+        TextView titleTxtView = (TextView) v.findViewById(R.id.mytext);
+        titleTxtView.setText("קצב זרימה");
 
         _pairDialogIsON = false;
         getConsumptionBtn = (Button) findViewById(R.id.getConsuptBtn);
@@ -71,7 +82,16 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
         registerTypeTV = (TextView) findViewById(R.id.registerTypeTextView);
         dataTextView = (TextView) findViewById(R.id.dataTextView);
         unitTV = (TextView) findViewById(R.id.unit_textView);
+        data1TV = (TextView) findViewById(R.id.data1TextView);
+
+        unit1TV = (TextView) findViewById(R.id.unit1_textView);
+        data2TV = (TextView) findViewById(R.id.data2TextView);
+        unit2TV = (TextView) findViewById(R.id.unit2_textView);
+        constraintLayout1 = (ConstraintLayout) findViewById(R.id.constraintLayout1);
         unitTV.setText("");
+        unit1TV.setText("");
+        unit2TV.setText("");
+        cntDouble = 0;
 
         getConsumptionBtn.setVisibility(View.INVISIBLE);
         dataConvert.setVisibility(View.INVISIBLE);
@@ -82,6 +102,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
         disconnectBtn.setVisibility(View.INVISIBLE);
         dataTextView.setVisibility(View.INVISIBLE);
         unitTV.setVisibility(View.INVISIBLE);
+        constraintLayout1.setVisibility(View.INVISIBLE);
 
         _downCountTimer = new Timer();
         _downCountTimer.schedule(new TimerTask() {
@@ -93,7 +114,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
         }, 0, 1000);
 
         String[] inputArraySpinner = new String[] {
-                "3", "4", "5", "6", "7", "8", "9", "10"};
+                "חיבור בודד", "חיבור כפול"};
 
         ArrayAdapter<String> inputAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, inputArraySpinner);
@@ -121,7 +142,12 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
             @Override
             public void onClick(View v) {
                 unitTV.setText("");
+                unit1TV.setText("");
+                unit2TV.setText("");
+
                 dataTextView.setText("");
+                data1TV.setText("");
+                data2TV.setText("");
                 MeganetInstances.getInstance().GetMeganetEngine().Prompt(MeganetEngine.ePromptType.TEN_CHR_PAIRING, "E");
             }
         });
@@ -140,6 +166,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
                     disconnectBtn.setVisibility(View.INVISIBLE);
                     dataTextView.setVisibility(View.INVISIBLE);
                     unitTV.setVisibility(View.INVISIBLE);
+                    constraintLayout1.setVisibility(View.INVISIBLE);
 
                     connectTextView.setText("לא מחובר");
                     _timerFlag = false;
@@ -152,8 +179,24 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
             @Override
             public void onClick(View v) {
                 Object selectedItem = inputSpinner.getSelectedItem();
-                MeganetInstances.getInstance().GetMeganetEngine().getConsumption(Integer.parseInt(selectedItem.toString()));
+                if(selectedItem.toString().equals("חיבור בודד"))
+                {
+                    dataTextView.setVisibility(View.VISIBLE);
+                    unitTV.setVisibility(View.VISIBLE);
+                    constraintLayout1.setVisibility(View.INVISIBLE);
+                    flagdouble = false;
+
+                } else {
+                    dataTextView.setVisibility(View.INVISIBLE);
+                    unitTV.setVisibility(View.INVISIBLE);
+                    constraintLayout1.setVisibility(View.VISIBLE);
+                    flagdouble = true;
+                }
+                MeganetInstances.getInstance().GetMeganetEngine().getConsumption(3);
                 unitTV.setText("");
+                unit1TV.setText("");
+                unit2TV.setText("");
+
                 _timerFlag = true;
                 _timerCount = 0;
             }
@@ -219,6 +262,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
         return num;
     }
 
+/*
     public double unitConsumption(byte b, double consumption)
     {
         String str = String.format("%8s", Integer.toBinaryString(b & 0xFF)).replace(' ', '0');
@@ -258,9 +302,17 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
                 break;
         }
         unitTV.setText("m³/h");
-        dataTextView.setText(String.format("%.02f", consumption));
+        unit1TV.setText("m³/h");
+        unit2TV.setText("m³/h");
+
+        if(flagdouble) {
+            data1TV.setText(String.format("%.02f", consumption));
+        }
+        else
+            dataTextView.setText(String.format("%.02f", consumption));
         return consumption;
     }
+ */
 
     public void Oncheck(View v){
     }
@@ -303,10 +355,27 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
             consumption = ConvertByteToNumber(subArray);
             double register = getRegisterType();
             consumption = consumption/register;
-            unitTV.setText("m³/h");
-            dataTextView.setText(String.format("%.03f", consumption));
-            //consumption = unitConsumption(dataArr_prm[8], consumption);
-            _timerFlag = false;
+
+            if(flagdouble)
+            {
+                cntDouble++;
+                if(cntDouble>1) {
+                    data2TV.setText(String.format("%.03f", consumption));
+                    unit2TV.setText("m³/h");
+                    _timerFlag = false;
+                    cntDouble = 0;
+                }
+                else {
+                    data1TV.setText(String.format("%.03f", consumption));
+                    unit1TV.setText("m³/h");
+                }
+            }
+            else {
+                dataTextView.setText(String.format("%.03f", consumption));
+                unitTV.setText("m³/h");
+                //consumption = unitConsumption(dataArr_prm[8], consumption);
+                _timerFlag = false;
+            }
         }
      }
 
@@ -324,7 +393,16 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
                     public void run() {
                         // Access/update UI here
                         Integer val = 60 - _timerCount;
-                        dataTextView.setText(val.toString());
+
+                        if(flagdouble)
+                        {
+                            data2TV.setText(val.toString());
+                            if (cntDouble<1)
+                                data1TV.setText(val.toString());
+                        }
+                        else
+                            dataTextView.setText(val.toString());
+
                         consumption = 0;
                         if(_timerCount > 60)
                         {
@@ -342,6 +420,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
                             disconnectBtn.setVisibility(View.INVISIBLE);
                             dataTextView.setVisibility(View.INVISIBLE);
                             unitTV.setVisibility(View.INVISIBLE);
+                            constraintLayout1.setVisibility(View.INVISIBLE);
 
                             _timerFlag = false;
                             _timerCount = 0;
@@ -411,7 +490,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
 
     private void PairingDialot() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("התחבר עם מכשיר: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress() + " ?")
+        builder.setMessage("האם להתחבר עם מכשיר: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress() + " ?")
                 .setCancelable(false)
                 .setPositiveButton("כן", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -419,7 +498,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
                                 Toast.LENGTH_SHORT).show();
                         //powerOffButton.setVisibility(View.VISIBLE);
                         MeganetInstances.getInstance().GetMeganetEngine().PairingDevice(true, false);
-                        connectTextView.setText("התחבר עם מכשיר: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress());
+                        connectTextView.setText("האם להתחבר עם מכשיר: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress() + " ?");
                         dialog.dismiss();
 
                         getConsumptionBtn.setVisibility(View.VISIBLE);
@@ -429,8 +508,9 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
                         registerSpinner.setVisibility(View.VISIBLE);
                         registerTypeTV.setVisibility(View.VISIBLE);
                         disconnectBtn.setVisibility(View.VISIBLE);
-                        dataTextView.setVisibility(View.VISIBLE);
-                        unitTV.setVisibility(View.VISIBLE);
+                        dataTextView.setVisibility(View.INVISIBLE);
+                        unitTV.setVisibility(View.INVISIBLE);
+                        constraintLayout1.setVisibility(View.INVISIBLE);
 
                         _pairDialogIsON = false;
                     }
@@ -459,95 +539,95 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
         bq.setTextColor(Color.BLUE);
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_consumption, menu);
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        Intent intent;
-        switch (item.getItemId()) {
-/*
-            case R.id.menu_consumption_field_verif:
-                super.onBackPressed();
-                MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.FIELD_VERIF_1);
-                intent = new Intent(ConsumptionActivity.this, ReadsActivity.class);
-                startActivity(intent);
-                break;
-
-            case R.id.menu_consumption_ranman:
-                super.onBackPressed();
-                Toast.makeText(getApplicationContext(), "RANMAN RSSI", Toast.LENGTH_LONG).show();
-                String url = MeganetInstances.getInstance().GetMeganetDb().getSetting(7).GetKeyValue();//"http://www.google.com";
-                if (!url.startsWith("http://") && !url.startsWith("https://"))
-                    url = "http://" + url;
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-                break;
-
-            case R.id.menu_consumption_read_meter:
-                super.onBackPressed();
-                Toast.makeText(getApplicationContext(), "Read Meter", Toast.LENGTH_LONG).show();
-
-                MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.READ_METER);
-                intent = new Intent(ConsumptionActivity.this, ReadsActivity.class);
-                startActivity(intent);
-                break;
-*/
-            case R.id.menu_consumption_ftp:
-                super.onBackPressed();
-                Toast.makeText(getApplicationContext(), "הגדרות FTP", Toast.LENGTH_LONG).show();
-
-                MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
-                intent = new Intent(ConsumptionActivity.this, FTP_Controll.class);
-                startActivity(intent);
-                break;
-
-            case R.id.menu_consumption_getlog:
-                Toast.makeText(getApplicationContext(), "יומן היסטוריה", Toast.LENGTH_LONG).show();
-                MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
-                intent = new Intent(ConsumptionActivity.this, History_Log_1.class);
-                startActivity(intent);
-                break;
-
-            case R.id.menu_consumption_settings:
-                super.onBackPressed();
-                Toast.makeText(getApplicationContext(), "הגדרות", Toast.LENGTH_LONG).show();
-
-                MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
-                intent = new Intent(ConsumptionActivity.this, SettingsActivity.class);
-                startActivity(intent);
-                break;
-/*
-            case R.id.menu_consumption_program:
-                Toast.makeText(getApplicationContext(), "Programming", Toast.LENGTH_LONG).show();
-
-                MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
-                intent = new Intent(ConsumptionActivity.this, ChooseDeviceActivity.class);
-                startActivity(intent);
-                break;
-
-            case R.id.menu_consumption_rdm:
-                Toast.makeText(getApplicationContext(), "RDM Control", Toast.LENGTH_LONG).show();
-
-                MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
-                intent = new Intent(ConsumptionActivity.this, RDM_Controll.class);
-                startActivity(intent);
-                break;
-                
- */
+    /*
+        @Override
+        public boolean onCreateOptionsMenu(Menu menu) {
+            // Inflate the menu; this adds items to the action bar if it is present.
+            getMenuInflater().inflate(R.menu.menu_consumption, menu);
+            return true;
         }
 
-        return super.onOptionsItemSelected(item);
-    }
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            // Handle action bar item clicks here. The action bar will
+            // automatically handle clicks on the Home/Up button, so long
+            // as you specify a parent activity in AndroidManifest.xml.
+            int id = item.getItemId();
+            Intent intent;
+            switch (item.getItemId()) {
+
+                case R.id.menu_consumption_field_verif:
+                    super.onBackPressed();
+                    MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.FIELD_VERIF_1);
+                    intent = new Intent(ConsumptionActivity.this, ReadsActivity.class);
+                    startActivity(intent);
+                    break;
+
+                case R.id.menu_consumption_ranman:
+                    super.onBackPressed();
+                    Toast.makeText(getApplicationContext(), "RANMAN RSSI", Toast.LENGTH_LONG).show();
+                    String url = MeganetInstances.getInstance().GetMeganetDb().getSetting(7).GetKeyValue();//"http://www.google.com";
+                    if (!url.startsWith("http://") && !url.startsWith("https://"))
+                        url = "http://" + url;
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+                    break;
+
+                case R.id.menu_consumption_read_meter:
+                    super.onBackPressed();
+                    Toast.makeText(getApplicationContext(), "Read Meter", Toast.LENGTH_LONG).show();
+
+                    MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.READ_METER);
+                    intent = new Intent(ConsumptionActivity.this, ReadsActivity.class);
+                    startActivity(intent);
+                    break;
+
+                case R.id.menu_consumption_ftp:
+                    super.onBackPressed();
+                    Toast.makeText(getApplicationContext(), "הגדרות FTP", Toast.LENGTH_LONG).show();
+
+                    MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
+                    intent = new Intent(ConsumptionActivity.this, FTP_Controll.class);
+                    startActivity(intent);
+                    break;
+
+                case R.id.menu_consumption_getlog:
+                    Toast.makeText(getApplicationContext(), "יומן היסטוריה", Toast.LENGTH_LONG).show();
+                    MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
+                    intent = new Intent(ConsumptionActivity.this, History_Log_1.class);
+                    startActivity(intent);
+                    break;
+
+                case R.id.menu_consumption_settings:
+                    super.onBackPressed();
+                    Toast.makeText(getApplicationContext(), "הגדרות", Toast.LENGTH_LONG).show();
+
+                    MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
+                    intent = new Intent(ConsumptionActivity.this, SettingsActivity.class);
+                    startActivity(intent);
+                    break;
+
+                case R.id.menu_consumption_program:
+                    Toast.makeText(getApplicationContext(), "Programming", Toast.LENGTH_LONG).show();
+
+                    MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
+                    intent = new Intent(ConsumptionActivity.this, ChooseDeviceActivity.class);
+                    startActivity(intent);
+                    break;
+
+                case R.id.menu_consumption_rdm:
+                    Toast.makeText(getApplicationContext(), "RDM Control", Toast.LENGTH_LONG).show();
+
+                    MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.NONE);
+                    intent = new Intent(ConsumptionActivity.this, RDM_Controll.class);
+                    startActivity(intent);
+                    break;
+
+
+            }
+
+            return super.onOptionsItemSelected(item);
+        }
+    */
 
     @Override
     public void onStart() {

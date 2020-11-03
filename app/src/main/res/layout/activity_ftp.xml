@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextRanManURL"
         android:layout_alignEnd="@+id/editTextRanManURL"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
         android:text="IP FTP"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp" />
@@ -26,6 +27,7 @@
         android:layout_alignParentEnd="true"
         android:singleLine="true"
         android:text="10.10.10.10"
+        android:gravity="end"
         android:textColorHighlight="@color/primary_material_dark"
         android:textSize="14sp" />
 
@@ -35,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/IP_FTP"
         android:layout_alignEnd="@+id/editTextRanManURL"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:text="משתמש FTP"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp" />
@@ -50,6 +52,7 @@
         android:inputType="textPersonName"
         android:singleLine="true"
         android:text="admin"
+        android:gravity="end"
         android:textColorHighlight="@color/primary_material_dark"
         android:textSize="14sp" />
 
@@ -59,8 +62,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/USER_FTP"
         android:layout_alignEnd="@+id/editTextRanManURL"
-        android:layout_alignParentStart="true"
-        android:text="ססמא FTP"
+        android:layout_alignParentEnd="true"
+        android:text="סיסמא FTP"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp" />
 
@@ -74,6 +77,7 @@
         android:inputType="textPassword"
         android:singleLine="true"
         android:text="admin"
+        android:gravity="end"
         android:textColorHighlight="@color/primary_material_dark"
         android:textSize="14sp" />
     <TextView
@@ -82,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/PASS_FTP"
         android:layout_alignEnd="@+id/editTextRanManURL"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:text="Port"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp" />
@@ -97,6 +101,7 @@
         android:inputType="number"
         android:singleLine="true"
         android:text="10"
+        android:gravity="end"
         android:textColorHighlight="@color/primary_material_dark"
         android:textSize="14sp" />
 
@@ -104,10 +109,10 @@
         android:id="@+id/buttonSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/PORT_FTP"
+        android:layout_above="@+id/buttonBack"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="140dp"
+        android:layout_marginBottom="5dp"
         android:text="שמור"
         android:textColor="@color/colorButtonText" />
 
@@ -116,9 +121,10 @@
         android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonSave"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
         android:text="חזרה"
         android:textColor="@color/colorButtonText" />
 

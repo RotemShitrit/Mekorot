@@ -679,9 +679,9 @@ public class MeganetEngine extends BTengine {
             SendData(_promptArr);
             _timerCount++;
             if(_currentCommand == commandType.PROMPT)
-                _consumer.OnMessageCb("Waiting for MTU response");
+                _consumer.OnMessageCb("מחכה לתגובת המכשיר");
             else if(_currentCommand == commandType.PROMPT_SYNC)
-            _pulseConsumer.OnMessageCb("Waiting for Node response");
+            _pulseConsumer.OnMessageCb("מחכה לתגובת המכשיר");
             // Replace "MTU" to "Node" on 21.11.2019
         }
         else if(_currentCommand == commandType.WRITE_CMD || _currentCommand == commandType.WRITE_RESULT || _currentCommand == commandType.READ_AFTER_WRITE)

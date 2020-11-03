@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingStart="@dimen/activity_horizontal_margin"
+    android:paddingEnd="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#ffffff"
     android:backgroundTint="#ffffff">
 
     <Button
+        android:id="@+id/btnConnect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="5dp"
         android:text="התחבר"
-        android:id="@+id/btnConnect"
-        android:layout_marginStart="5dp"
-        android:layout_alignParentStart="true"
         android:textColor="@color/colorButtonText"
         android:textSize="20sp" />
 
@@ -29,7 +30,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:text="יש ללחוץ על כפתור התחבר ולהעביר מגנט על המכשיר"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="20sp"
@@ -68,13 +69,13 @@
 
     <TextView
         android:id="@+id/inputTextView"
-        android:layout_width="76dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewConnect"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:text="קלט"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="כניסה"
         android:textSize="18sp" />
 
     <Spinner
@@ -82,11 +83,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewConnect"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
-        android:layout_toEndOf="@+id/inputTextView" />
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@+id/inputTextView"
+        android:background="@drawable/spinner2" />
 
     <Button
         android:id="@+id/btnDisconnect"
@@ -109,7 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/registerSpinner"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:textColor="@color/colorButtonText"
         android:text="קבל קצב זרימה"
         android:textSize="20sp"/>
@@ -144,25 +146,147 @@
 
     <TextView
         android:id="@+id/registerTypeTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/inputTextView"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
         android:text="סוג הרשמה"
         android:textSize="18sp" />
 
     <Spinner
         android:id="@+id/registerSpinner"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/inputSpinner"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
-        android:layout_toEndOf="@+id/registerTypeTextView"/>
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@+id/registerTypeTextView"
+        android:layout_toEndOf="@+id/registerTypeTextView"
+        android:background="@drawable/spinner2" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/getConsuptBtn"
+        android:layout_marginTop="8dp"
+        android:gravity="center_horizontal"
+        android:weightSum="1.0">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/subConstraintLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:weightSum="1.0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/num1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/data1TextView"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="60dp"
+                android:gravity="center_horizontal"
+                android:text="כניסה 3"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/data1TextView"
+                android:layout_width="140dp"
+                android:layout_height="70dp"
+                android:layout_below="@id/num1"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/border"
+                android:text=""
+                android:gravity="center"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/num1" />
+
+            <TextView
+                android:id="@+id/unit1_textView"
+                android:layout_width="60dp"
+                android:layout_height="29dp"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="2dp"
+                android:gravity="end"
+                android:text="m³/h"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/data1TextView"
+                app:layout_constraintTop_toBottomOf="@+id/num1" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/subConstraintLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="13dp"
+            android:gravity="center_horizontal"
+            android:weightSum="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/num2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:text="כניסה 4"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/data2TextView"
+                android:layout_width="140dp"
+                android:layout_height="70dp"
+                android:layout_below="@id/num2"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/border"
+                android:text=""
+                android:gravity="center"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/num2" />
+
+
+            <TextView
+                android:id="@+id/unit2_textView"
+                android:layout_width="60dp"
+                android:layout_height="29dp"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="2dp"
+                android:gravity="end"
+                android:text="m³/h"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/data2TextView"
+                app:layout_constraintTop_toBottomOf="@+id/num2" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
 
 
 </RelativeLayout>

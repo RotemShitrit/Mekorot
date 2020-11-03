@@ -1,5 +1,7 @@
 package com.kp.meganet.meganetkp;
 
+import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
@@ -20,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.commons.net.ftp.FTP;
@@ -46,11 +49,19 @@ public class History_Log_1 extends AppCompatActivity {
     FTPClient mFTPClient = null; //for access to FTP
 
 
+    @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.history_log_1);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar_title);
+
+        View v = getSupportActionBar().getCustomView();
+        TextView titleTxtView = (TextView) v.findViewById(R.id.mytext);
+        titleTxtView.setText("יומן היסטוריה");
 
         uploadFiles = (Button) findViewById(R.id.uploadBtn);
         back_btn = (Button) findViewById(R.id.backBtn);
@@ -119,6 +130,7 @@ public class History_Log_1 extends AppCompatActivity {
         }
     }
 
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -134,7 +146,7 @@ public class History_Log_1 extends AppCompatActivity {
         int id = item.getItemId();
         Intent intent;
         switch (item.getItemId()) {
-/*
+
             case R.id.menu_getlog_field_verif:
                 super.onBackPressed();
                 MeganetInstances.getInstance().GetMeganetEngine().SetCurrentReadType(MeganetEngine.eReadType.FIELD_VERIF_1);
@@ -168,7 +180,7 @@ public class History_Log_1 extends AppCompatActivity {
                 intent = new Intent(History_Log_1.this, RDM_Controll.class);
                 startActivity(intent);
                 break;
-*/
+
             case R.id.menu_getlog_settings:
                 super.onBackPressed();
                 Toast.makeText(getApplicationContext(), "הגדרות", Toast.LENGTH_LONG).show();
@@ -188,7 +200,7 @@ public class History_Log_1 extends AppCompatActivity {
                 startActivity(intent);
                 // TODO Something
                 break;
-/*
+
             case R.id.menu_getlog_program:
                 Toast.makeText(getApplicationContext(), "Programming", Toast.LENGTH_LONG).show();
 
@@ -197,7 +209,7 @@ public class History_Log_1 extends AppCompatActivity {
                 startActivity(intent);
                 // TODO Something
                 break;
-*/
+
             case R.id.menu_getlog_consumption:
                 Toast.makeText(getApplicationContext(), "קצב זרימה", Toast.LENGTH_LONG).show();
 
@@ -210,7 +222,7 @@ public class History_Log_1 extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
+*/
 
     public class uploadFile extends AsyncTask<Void, Void, Void> {
         Boolean connect = true;

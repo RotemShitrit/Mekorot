@@ -1,5 +1,7 @@
 package com.kp.meganet.meganetkp;
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
@@ -123,11 +125,19 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
         }
     };
 
+    @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.history_log_2);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar_title);
+
+        View v = getSupportActionBar().getCustomView();
+        TextView titleTxtView = (TextView) v.findViewById(R.id.mytext);
+        titleTxtView.setText("יומן היסטוריה");
 
         toast = new Toast(this);
         //input = (RadioGroup) findViewById(R.id.inputRadio);

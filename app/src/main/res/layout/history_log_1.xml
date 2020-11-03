@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     android:padding="15dp"
     android:focusable="true"
+    android:gravity="end"
+    android:layoutDirection="rtl"
+    android:layout_gravity="end"
     android:focusableInTouchMode="true">
 
     <Button
