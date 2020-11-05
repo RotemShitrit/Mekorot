@@ -50,11 +50,11 @@
         android:layout_below="@+id/editTextHHID"
         android:layout_alignEnd="@+id/editTextHHID"
         android:layout_alignParentStart="true"
-        android:text="RANMAN URL"
+        android:text="כתובת אתר עוצמת קליטה"
+        android:layoutDirection="rtl"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="13sp"
-        android:visibility="invisible"/>
+        android:textSize="13sp" />
 
     <EditText
         android:id="@+id/editTextRanManURL"
@@ -63,10 +63,11 @@
         android:layout_below="@+id/textView8"
         android:layout_alignEnd="@+id/textView8"
         android:layout_alignParentStart="true"
+        android:layoutDirection="rtl"
+        android:gravity="end"
         android:inputType="textWebEditText"
         android:text="http://www.google.com"
-        android:textSize="11sp"
-        android:visibility="invisible"/>
+        android:textSize="11sp" />
 
     <TextView
         android:id="@+id/textView5"

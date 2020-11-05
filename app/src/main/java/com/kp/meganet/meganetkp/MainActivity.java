@@ -229,17 +229,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         int a = 0;
 
-        /*if (id == R.id.nav_rssi) {
+        if (id == R.id.nav_rssi) {
             OpenNewActivity(4);
-        }
-        else*/
-
-        if(id == R.id.nav_ftp) {
-
+        } else if(id == R.id.nav_ftp) {
             OpenNewActivity(9);
-        }
-        else
-        {
+        } else {
             if(!btSupport)
             {
                 Toast.makeText(getApplicationContext(), "המכשיר שלך אינו תומך בבלוטוס",
