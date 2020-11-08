@@ -28,10 +28,10 @@
         android:layout_below="@+id/promptbtn"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
-        android:text="יש ללחוץ על כפתור התחבר ולהעביר מגנט על המכשיר"
+        android:layout_marginEnd="5dp"
+        android:text='יש ללחוץ על כפתור "התחבר" ולהעביר מגנט על יחידת הקצה'
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -97,6 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
+        android:layoutDirection="rtl"
         android:layout_marginTop="145dp"
         android:layout_marginStart="10dp"
         android:background="@drawable/spinner2" />

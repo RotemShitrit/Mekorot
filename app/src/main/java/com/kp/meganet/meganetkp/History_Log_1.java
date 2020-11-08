@@ -61,7 +61,7 @@ public class History_Log_1 extends AppCompatActivity {
 
         View v = getSupportActionBar().getCustomView();
         TextView titleTxtView = (TextView) v.findViewById(R.id.mytext);
-        titleTxtView.setText("יומן היסטוריה");
+        titleTxtView.setText("יומן היסטוריית קריאות");
 
         uploadFiles = (Button) findViewById(R.id.uploadBtn);
         back_btn = (Button) findViewById(R.id.backBtn);

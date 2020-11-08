@@ -68,7 +68,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
 
         View v = getSupportActionBar().getCustomView();
         TextView titleTxtView = (TextView) v.findViewById(R.id.mytext);
-        titleTxtView.setText("קצב זרימה");
+        titleTxtView.setText("ספיקה רגעית");
 
         _pairDialogIsON = false;
         getConsumptionBtn = (Button) findViewById(R.id.getConsuptBtn);
@@ -490,7 +490,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
 
     private void PairingDialot() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("האם להתחבר עם מכשיר: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress() + " ?")
+        builder.setMessage("האם להתחבר עם יחידת קצה: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress() + " ?")
                 .setCancelable(false)
                 .setPositiveButton("כן", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -498,7 +498,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
                                 Toast.LENGTH_SHORT).show();
                         //powerOffButton.setVisibility(View.VISIBLE);
                         MeganetInstances.getInstance().GetMeganetEngine().PairingDevice(true, false);
-                        connectTextView.setText("האם להתחבר עם מכשיר: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress() + " ?");
+                        connectTextView.setText("מחובר ליחידת קצה: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress() + " ?");
                         dialog.dismiss();
 
                         getConsumptionBtn.setVisibility(View.VISIBLE);

@@ -19,7 +19,9 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -62,9 +64,10 @@ import java.util.Set;
 
 public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBack,iCallback {
 
+
     private boolean _pairDialogIsON;
     Map<Long,Long> messages;
-
+    
     private TextView tv16,tv1;
     private RadioGroup input;
     private Spinner inputSpinner;
@@ -137,7 +140,7 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
 
         View v = getSupportActionBar().getCustomView();
         TextView titleTxtView = (TextView) v.findViewById(R.id.mytext);
-        titleTxtView.setText("יומן היסטוריה");
+        titleTxtView.setText("יומן היסטוריית קריאות");
 
         toast = new Toast(this);
         //input = (RadioGroup) findViewById(R.id.inputRadio);
@@ -230,9 +233,10 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
             @Override
             public void onClick(View v) {
                 MeganetInstances.getInstance().GetMeganetEngine().Prompt(MeganetEngine.ePromptType.TEN_CHR_PAIRING, PromptConvert("E"));
-                toast.makeText(getApplicationContext(),"מחכה לתגובת המכשיר",Toast.LENGTH_LONG).show();
+                toast.makeText(getApplicationContext(), "מחכה לתגובת יחידת הקצה", Toast.LENGTH_LONG).show();
                 CommonSettingsData data = new CommonSettingsData(6, "last_programm_prompt_type", PromptConvert("E"));
                 MeganetInstances.getInstance().GetMeganetDb().updateProperty(data);
+
             }
         });
     }
@@ -280,7 +284,7 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
     private void PairingDialog()
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(this); // Alert dialog for connecting to device
-        builder.setMessage("התחבר עם מכשיר: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress() + " ?")
+        builder.setMessage("האם להתחבר עם יחידת קצה: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress() + " ?")
                 .setCancelable(false)
                 .setPositiveButton("כן", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -288,7 +292,7 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
                         Toast.LENGTH_SHORT).show();
 
                         promptBtn.setVisibility(View.INVISIBLE);
-                        tv1.setText("התחבר עם מכשיר: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress());
+                        tv1.setText("התחבר עם יחידת קצה: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress());
                         int ndevice = Integer.decode("0x" +  MeganetInstances.getInstance().GetMeganetEngine().GetNdevice())-1;
                         if(ndevice == 45) {
                             getLogBtn.setVisibility(View.VISIBLE);
@@ -453,7 +457,7 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
                 new_fileName = MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress() + "_" + formatter.format(now_date) + ".csv";
                 MeganetInstances.getInstance().GetMeganetEngine().Disconnect();
 
-                if(isExternalStorageWritable() && checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                if(isExternalStorageWritable() && checkPermission()) {
                     String root = Environment.getExternalStorageDirectory().toString();
                     File myDir = new File(root + "/saved_logs");
                     if (!myDir.exists()) {
@@ -474,7 +478,7 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
                     }
 
                 } else {
-                    toast.makeText(getApplicationContext(), "אינו יכול לשמור את הקובץ באחסון החיצוני!",Toast.LENGTH_LONG).show();
+                    toast.makeText(getApplicationContext(), "שמירת קובץ נכשלה!",Toast.LENGTH_LONG).show();
                 }
                 finish();
                 /*
@@ -489,9 +493,15 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
         }
     }
 
-    public boolean checkPermission(String permmission){
-        int check = ContextCompat.checkSelfPermission(this,permmission);
-        return (check == PackageManager.PERMISSION_GRANTED);
+    public boolean checkPermission(){
+        //return(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED);
+        if ((ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)) {
+            toast.makeText(getApplicationContext(), "לא ניתן להמשיך בפעולה! \n יש להכנס להגדרות האפליקציה ולאפשר גישה לקבצים.", Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            return true; // Permission has already been granted
+        }
     }
 
     private boolean isExternalStorageWritable(){

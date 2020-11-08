@@ -31,7 +31,7 @@
         android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        android:text="יש ללחוץ על כפתור התחבר ולהעביר מגנט על המכשיר"
+        android:text='יש ללחוץ על כפתור "התחבר" ולהעביר מגנט על יחידת הקצה'
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -75,7 +75,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
-        android:text="כניסה"
+        android:text="סוג חיבור"
         android:textSize="18sp" />
 
     <Spinner
@@ -86,7 +86,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="5dp"
         android:layout_toStartOf="@+id/inputTextView"
         android:background="@drawable/spinner2" />
 
@@ -152,7 +152,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
-        android:text="סוג הרשמה"
+        android:text="סוג מד"
         android:textSize="18sp" />
 
     <Spinner
@@ -163,10 +163,12 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="5dp"
         android:layout_toStartOf="@+id/registerTypeTextView"
         android:layout_toEndOf="@+id/registerTypeTextView"
-        android:background="@drawable/spinner2" />
+        android:background="@drawable/spinner2"
+        android:layoutDirection="rtl"
+        android:textAlignment="textEnd" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout1"
