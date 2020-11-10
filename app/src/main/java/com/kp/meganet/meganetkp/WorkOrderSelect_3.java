@@ -31,6 +31,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class WorkOrderSelect_3 extends AppCompatActivity {
@@ -272,7 +273,7 @@ public class WorkOrderSelect_3 extends AppCompatActivity {
 
                     // read file with input stream
                     InputStream inStream = mFTPClient.retrieveFileStream(fileName);
-                    InputStreamReader isr = new InputStreamReader(inStream, "UTF8");
+                    InputStreamReader isr = new InputStreamReader(inStream, StandardCharsets.UTF_8);
 
                     // Read the data that file include
                     int data = isr.read();
@@ -292,7 +293,7 @@ public class WorkOrderSelect_3 extends AppCompatActivity {
                     {
                         file_data.add(splited[i]);
                         splited2 = splited[i].split(",");
-                        tmp = String.valueOf(cnt) + ", " + splited2[0] + ", " + splited2[1]; // arrange the details to match the table by columns
+                        tmp = cnt + ", " + splited2[0] + ", " + splited2[1]; // arrange the details to match the table by columns
                         lst.add(tmp);
                         cnt++; // count number of lines
                     }

@@ -115,7 +115,7 @@ public abstract class BTengine {
             Method m = null;
             try {
                 m = _device.getClass().getMethod("createRfcommSocket",
-                        new Class[] { int.class });
+                        int.class);
             }
             catch (Exception e) {
                 e.printStackTrace();
@@ -196,6 +196,17 @@ public abstract class BTengine {
                             }
                         }
 
+                        else if(MeganetInstances.getInstance().GetMeganetEngine().getCurrentCommand()== MeganetEngine.commandType.CONSUMPTION)
+                        {
+                            try {
+                                Thread.sleep(3000);
+                                _startCollectDateTag = System.currentTimeMillis();
+
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
                         int bytesAvailable = _mmInputStream.available(); // Number of bytes in the input stream
                         if(_startCollect && (System.currentTimeMillis() - _startCollectDateTag > _timeoutMilliSec && !_isInfinitReceive)) { //Check if not over time receive
                             ReceiveTimeout();
@@ -259,13 +270,14 @@ public abstract class BTengine {
                                             public void run() {
                                                 if(collectedBytes.length > 2)
                                                 {
-                                                    if (MeganetInstances.getInstance().GetMeganetEngine().getCurrentCommand()== MeganetEngine.commandType.GET_LOG ){
+                                                    if (MeganetInstances.getInstance().GetMeganetEngine().getCurrentCommand()== MeganetEngine.commandType.GET_LOG ||
+                                                            MeganetInstances.getInstance().GetMeganetEngine().getCurrentCommand()== MeganetEngine.commandType.CONSUMPTION){
                                                         DataProcess(collectedBytes);
                                                     }
                                                     else if(collectedBytes[1] + 2 == collectedBytes.length )
                                                         DataProcess(collectedBytes);
                                                     else
-                                                        return;;
+                                                        return;
                                                 }
                                                 else
                                                     return;
@@ -280,7 +292,7 @@ public abstract class BTengine {
                                 receivedDataLenght = 0;
                                 handler.post(new Runnable() {
                                     public void run() {
-                                        JunkBuffer(packetBytes);;
+                                        JunkBuffer(packetBytes);
                                     }
                                 });
                             }

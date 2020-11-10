@@ -90,7 +90,7 @@ public class WorkOrderSelect_1 extends AppCompatActivity {
                         {
                             name_of_files.add(name);
                             name = name.substring(0,name.indexOf("."));
-                            tmp = String.valueOf(cnt) + ", WO_" + name.split("_")[1] + ", " + name.split("_")[5];
+                            tmp = cnt + ", WO_" + name.split("_")[1] + ", " + name.split("_")[5];
                             lst.add(tmp);
                             cnt ++;
                         }

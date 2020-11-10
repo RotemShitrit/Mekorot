@@ -679,9 +679,9 @@ public class MeganetEngine extends BTengine {
             SendData(_promptArr);
             _timerCount++;
             if(_currentCommand == commandType.PROMPT)
-                _consumer.OnMessageCb("מחכה לתגובת המכשיר");
+                _consumer.OnMessageCb("ממתין לתגובת יחידת הקצה");
             else if(_currentCommand == commandType.PROMPT_SYNC)
-            _pulseConsumer.OnMessageCb("מחכה לתגובת המכשיר");
+            _pulseConsumer.OnMessageCb("ממתין לתגובת יחידת הקצה");
             // Replace "MTU" to "Node" on 21.11.2019
         }
         else if(_currentCommand == commandType.WRITE_CMD || _currentCommand == commandType.WRITE_RESULT || _currentCommand == commandType.READ_AFTER_WRITE)
@@ -1530,11 +1530,11 @@ public class MeganetEngine extends BTengine {
                                 String deviceName = new String(tmpPromptArr); // tmpDeviceName.substring(0, tmpDeviceName.length()-3);
 
                                 // Get NDevice
-                                _ndevice = deviceName.substring(deviceName.length()-2, deviceName.length());
+                                _ndevice = deviceName.substring(deviceName.length()-2);
                                 _deviceVersion = deviceName.substring(0, deviceName.length() - 2);
 
                                 StartCollectData(true, false);
-                                _consumer.PairData(deviceName.substring(0, deviceName.length()), _ndevice, false);
+                                _consumer.PairData(deviceName, _ndevice, false);
                             }
                             else //REGULAR CASE
                             {
@@ -1550,9 +1550,9 @@ public class MeganetEngine extends BTengine {
 
                                 // Get Name and version
                                 String deviceName = new String(tmpPromptArr); // tmpDeviceName.substring(0, tmpDeviceName.length()-3);
-                                _consumer.PairData(deviceName.substring(0, deviceName.length()), _ndevice, true);
+                                _consumer.PairData(deviceName, _ndevice, true);
                                 // Get NDevice
-                                _ndevice = deviceName.substring(deviceName.length()-2, deviceName.length());
+                                _ndevice = deviceName.substring(deviceName.length()-2);
                                 //_deviceVersion = deviceName.substring(0, deviceName.length() - 2);
 
                                 _currentCommand = commandType.READ; //READ for REGULAR prompt
@@ -1575,7 +1575,7 @@ public class MeganetEngine extends BTengine {
                         } catch (Exception e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
-                        } ;
+                        }
                         break;
 
                     case PROMPT_SYNC:
@@ -1643,11 +1643,11 @@ public class MeganetEngine extends BTengine {
                                 String deviceName = new String(tmpPromptArr); // tmpDeviceName.substring(0, tmpDeviceName.length()-3);
 
                                 // Get NDevice
-                                _ndevice = deviceName.substring(deviceName.length()-2, deviceName.length());
+                                _ndevice = deviceName.substring(deviceName.length()-2);
                                 _deviceVersion = deviceName.substring(0, deviceName.length() - 2);
 
                                 StartCollectData(true, false);
-                                _pulseConsumer.PairData(deviceName.substring(0, deviceName.length()), _ndevice, false);
+                                _pulseConsumer.PairData(deviceName, _ndevice, false);
 
                                 _currentCommand = commandType.NEW_PULSE_READ;
                                 StartCollectData(true, false);

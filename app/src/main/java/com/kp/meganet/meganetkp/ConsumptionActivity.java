@@ -41,9 +41,9 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
     private boolean _pairDialogIsON, flagdouble;
     private int cntDouble;
     private Button connectBtn, disconnectBtn, getConsumptionBtn;
-    private TextView dataTextView, connectTextView, inputTV, unitTV, registerTypeTV, data1TV, data2TV, unit1TV, unit2TV;
+    private TextView dataTextView, connectTextView, inputTV, unitTV, registerTypeTV, registerSizeTV, data1TV, data2TV, unit1TV, unit2TV;
     private RadioGroup dataConvert;
-    private Spinner inputSpinner,registerSpinner;
+    private Spinner inputSpinner,registerSpinner, registerSizeSpinner;
     private ConstraintLayout constraintLayout1;
     private Timer _downCountTimer;
     private Integer _timerCount;
@@ -67,7 +67,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
         getSupportActionBar().setCustomView(R.layout.actionbar_title);
 
         View v = getSupportActionBar().getCustomView();
-        TextView titleTxtView = (TextView) v.findViewById(R.id.mytext);
+        TextView titleTxtView = v.findViewById(R.id.mytext);
         titleTxtView.setText("ספיקה רגעית");
 
         _pairDialogIsON = false;
@@ -80,6 +80,8 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
         inputTV = (TextView) findViewById(R.id.inputTextView);
         registerSpinner = (Spinner) findViewById(R.id.registerSpinner);
         registerTypeTV = (TextView) findViewById(R.id.registerTypeTextView);
+        registerSizeSpinner = (Spinner) findViewById(R.id.registerSizeSpinner);
+        registerSizeTV = (TextView) findViewById(R.id.registerSizeTextView);
         dataTextView = (TextView) findViewById(R.id.dataTextView);
         unitTV = (TextView) findViewById(R.id.unit_textView);
         data1TV = (TextView) findViewById(R.id.data1TextView);
@@ -99,6 +101,8 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
         inputSpinner.setVisibility(View.INVISIBLE);
         registerSpinner.setVisibility(View.INVISIBLE);
         registerTypeTV.setVisibility(View.INVISIBLE);
+        registerSizeSpinner.setVisibility(View.INVISIBLE);
+        registerSizeTV.setVisibility(View.INVISIBLE);
         disconnectBtn.setVisibility(View.INVISIBLE);
         dataTextView.setVisibility(View.INVISIBLE);
         unitTV.setVisibility(View.INVISIBLE);
@@ -114,7 +118,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
         }, 0, 1000);
 
         String[] inputArraySpinner = new String[] {
-                "חיבור בודד", "חיבור כפול"};
+                "חיבור בודד", "חיבור כפול (מכנסיים)"};
 
         ArrayAdapter<String> inputAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, inputArraySpinner);
@@ -128,6 +132,15 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
                 android.R.layout.simple_spinner_item, registerArraySpinner);
         registerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         registerSpinner.setAdapter(registerAdapter);
+
+
+        String[] registerSizeArraySpinner = new String[] {
+                "עד 4 צול", "6 צול ומעלה"};
+
+        ArrayAdapter<String> registerSizeAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, registerSizeArraySpinner);
+        registerSizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        registerSizeSpinner.setAdapter(registerSizeAdapter);
 
         MeganetInstances.getInstance().GetMeganetEngine().SetReadMetersRSNT(true);
         MeganetInstances.getInstance().GetMeganetEngine().InitProgramming(this, MeganetInstances.getInstance().GetMeganetDb().getSetting(1).GetKeyValue());
@@ -163,6 +176,8 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
                     inputSpinner.setVisibility(View.INVISIBLE);
                     registerSpinner.setVisibility(View.INVISIBLE);
                     registerTypeTV.setVisibility(View.INVISIBLE);
+                    registerSizeSpinner.setVisibility(View.INVISIBLE);
+                    registerSizeTV.setVisibility(View.INVISIBLE);
                     disconnectBtn.setVisibility(View.INVISIBLE);
                     dataTextView.setVisibility(View.INVISIBLE);
                     unitTV.setVisibility(View.INVISIBLE);
@@ -229,12 +244,22 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
         switch (registerSpinner.getSelectedItem().toString())
         {
             case "MBUS-Sensus HRI-Mei":
-                ret = 100;
+                if(registerSizeSpinner.getSelectedItem().toString().equals("עד 4 צול"))
+                    ret = 100;
+                else
+                    ret = 10;
                 break;
             case "MBUS-Sensus Abs.Encoder":
+                if(registerSizeSpinner.getSelectedItem().toString().equals("עד 4 צול"))
+                    ret = 1;
+                else
+                    ret = 0.1;
                 break;
             case "MBUS-Elster Falcon":
-                ret = 1000;
+                if(registerSizeSpinner.getSelectedItem().toString().equals("עד 4 צול"))
+                    ret = 1000;
+                else
+                    ret = 100;
                 break;
             case "MODBUS registers":
                 break;
@@ -336,7 +361,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
 
     @Override
     public void ReadData(byte[] dataArr_prm) {
-        if(dataArr_prm != null)
+        while (dataArr_prm.length > 0)
         {
             /*int num = dataType(dataArr_prm[7]);
             if (num>0)
@@ -350,7 +375,11 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
                 dataTextView.setText("No data!");
                 unitTV.setText("");
             }*/
-            byte[] subArray = Arrays.copyOfRange(dataArr_prm, dataArr_prm.length-4, dataArr_prm.length);
+            int len = dataArr_prm[1];
+            byte[] msg = Arrays.copyOfRange(dataArr_prm,0,len+2);
+            dataArr_prm = Arrays.copyOfRange(dataArr_prm,len+2,dataArr_prm.length);
+
+            byte[] subArray = Arrays.copyOfRange(msg, msg.length-4, msg.length);
             reverseArray(subArray);
             consumption = ConvertByteToNumber(subArray);
             double register = getRegisterType();
@@ -364,6 +393,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
                     unit2TV.setText("m³/h");
                     _timerFlag = false;
                     cntDouble = 0;
+                    flagdouble = false;
                 }
                 else {
                     data1TV.setText(String.format("%.03f", consumption));
@@ -417,6 +447,8 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
                             inputSpinner.setVisibility(View.INVISIBLE);
                             registerSpinner.setVisibility(View.INVISIBLE);
                             registerTypeTV.setVisibility(View.INVISIBLE);
+                            registerSizeSpinner.setVisibility(View.INVISIBLE);
+                            registerSizeTV.setVisibility(View.INVISIBLE);
                             disconnectBtn.setVisibility(View.INVISIBLE);
                             dataTextView.setVisibility(View.INVISIBLE);
                             unitTV.setVisibility(View.INVISIBLE);
@@ -498,7 +530,7 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
                                 Toast.LENGTH_SHORT).show();
                         //powerOffButton.setVisibility(View.VISIBLE);
                         MeganetInstances.getInstance().GetMeganetEngine().PairingDevice(true, false);
-                        connectTextView.setText("מחובר ליחידת קצה: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress() + " ?");
+                        connectTextView.setText("מחובר ליחידת קצה: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress() );
                         dialog.dismiss();
 
                         getConsumptionBtn.setVisibility(View.VISIBLE);
@@ -507,6 +539,8 @@ public class ConsumptionActivity extends AppCompatActivity implements iCallback 
                         inputSpinner.setVisibility(View.VISIBLE);
                         registerSpinner.setVisibility(View.VISIBLE);
                         registerTypeTV.setVisibility(View.VISIBLE);
+                        registerSizeSpinner.setVisibility(View.VISIBLE);
+                        registerSizeTV.setVisibility(View.VISIBLE);
                         disconnectBtn.setVisibility(View.VISIBLE);
                         dataTextView.setVisibility(View.INVISIBLE);
                         unitTV.setVisibility(View.INVISIBLE);

@@ -369,12 +369,12 @@ public class Ber1Activity extends AppCompatActivity {
         data += "ID," + id.getText().toString() + "\n";
         data += "Accumulation," + accumulation.getText().toString() + "\n";
         data += "Negative," + negative.getText().toString() + "\n";
-        data += "Meter Type," + (String) meterSpinner.getSelectedItem() + "\n";
-        data += "Size," + (String) sizeSpinner.getSelectedItem() + "\n";
-        data += "Flow unit," + (String) flowUnitSpinner.getSelectedItem() + "\n";
-        data += "Accumulation unit," + (String) accUnitSpinner.getSelectedItem() + "\n";
-        data += "Resolution," + (String) resolutionSpinner.getSelectedItem() + "\n";
-        data += "Pulse Width," + (String) pulseWidthSpinner.getSelectedItem() + "\n";
+        data += "Meter Type," + meterSpinner.getSelectedItem() + "\n";
+        data += "Size," + sizeSpinner.getSelectedItem() + "\n";
+        data += "Flow unit," + flowUnitSpinner.getSelectedItem() + "\n";
+        data += "Accumulation unit," + accUnitSpinner.getSelectedItem() + "\n";
+        data += "Resolution," + resolutionSpinner.getSelectedItem() + "\n";
+        data += "Pulse Width," + pulseWidthSpinner.getSelectedItem() + "\n";
         data += "Factor Q4," + factor.getText().toString() + "\n";
         data += "Q3," + Q3.getText().toString() + "\n";
         data += "Q03," + Q03.getText().toString() + "\n";
@@ -680,11 +680,11 @@ public class Ber1Activity extends AppCompatActivity {
                     }
                     if (accUnitSpinner.getSelectedItem().toString().equals("M3"))
                     {
-                        if (res == (double) 0.001) {
+                        if (res == 0.001) {
                             resolutionSpinner.setSelection(0);
-                        } else if (res == (double) 0.01) {
+                        } else if (res == 0.01) {
                             resolutionSpinner.setSelection(1);
-                        } else if (res == (double) 0.1) {
+                        } else if (res == 0.1) {
                             resolutionSpinner.setSelection(2);
                         } else if (res == (double) 1){
                             resolutionSpinner.setSelection(3);

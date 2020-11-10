@@ -140,11 +140,7 @@ public class DataAnalizer {
                 e.printStackTrace();
             }
         }
-        if(_devObject == null)
-            return false;
-
-
-        return true;
+        return _devObject != null;
     }
 
     public DevDB GetDeviceData(int ndevice_prm, String version_prm)
@@ -284,10 +280,7 @@ public class DataAnalizer {
                         {
                             bitPos = Integer.parseInt(brckStr);
                             boolean bitOperation;
-                            if(param.getValue().TabName.equals("1"))
-                                bitOperation = true;
-                            else
-                                bitOperation = false;
+                            bitOperation = param.getValue().TabName.equals("1");
 
                             rawDataArr[dataShift + param.getValue().StringPosition] = ChangeBit(rawDataArr[dataShift + param.getValue().StringPosition], bitPos-1, bitOperation);
 

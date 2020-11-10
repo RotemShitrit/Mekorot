@@ -574,7 +574,7 @@ public class ReadsActivity extends AppCompatActivity implements iReadMeterCallBa
         int[] intDataArr = new int[data_prm.length];
 
         for (int i = 0; i < data_prm.length; i++)
-            intDataArr[i] = (int) (data_prm[i] & 0xff);
+            intDataArr[i] = data_prm[i] & 0xff;
 
         // Rows.Add(Format(Int(tm.Hour), "##00") & ":" & Format(Int(tm.Minute), "##00") & ":" & Format(Int(tm.Second), "##00"), ID, System, Collector, Level)
         if (intDataArr.length == 13) {

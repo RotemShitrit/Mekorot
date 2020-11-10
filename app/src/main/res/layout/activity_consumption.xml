@@ -110,10 +110,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/registerSpinner"
+        android:layout_below="@+id/registerSizeSpinner"
         android:layout_marginTop="15dp"
         android:textColor="@color/colorButtonText"
-        android:text="קבל קצב זרימה"
+        android:text="קבל ספיקה רגעית"
         android:textSize="20sp"/>
 
     <TextView
@@ -150,7 +150,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/inputTextView"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="11dp"
         android:layout_marginEnd="5dp"
         android:text="סוג מד"
         android:textSize="18sp" />
@@ -169,6 +169,31 @@
         android:background="@drawable/spinner2"
         android:layoutDirection="rtl"
         android:textAlignment="textEnd" />
+
+
+    <TextView
+        android:id="@+id/registerSizeTextView"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/registerTypeTextView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="5dp"
+        android:text="קוטר מד"
+        android:textSize="18sp" />
+
+    <Spinner
+        android:id="@+id/registerSizeSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/registerSpinner"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_toStartOf="@+id/registerTypeTextView"
+        android:layout_toEndOf="@+id/registerTypeTextView"
+        android:background="@drawable/spinner2" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout1"
@@ -284,11 +309,8 @@
                 app:layout_constraintEnd_toEndOf="@+id/data2TextView"
                 app:layout_constraintTop_toBottomOf="@+id/num2" />
 
-
         </android.support.constraint.ConstraintLayout>
 
-
     </android.support.constraint.ConstraintLayout>
-
 
 </RelativeLayout>

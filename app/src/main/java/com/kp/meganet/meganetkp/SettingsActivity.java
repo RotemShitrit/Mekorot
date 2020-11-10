@@ -40,7 +40,7 @@ public class SettingsActivity extends AppCompatActivity {
         getSupportActionBar().setCustomView(R.layout.actionbar_title);
 
         View v = getSupportActionBar().getCustomView();
-        TextView titleTxtView = (TextView) v.findViewById(R.id.mytext);
+        TextView titleTxtView = v.findViewById(R.id.mytext);
         titleTxtView.setText("הגדרות");
 
 

@@ -137,12 +137,7 @@ public class WorkOrderSelect_6 extends AppCompatActivity {
         boolean gpsStatus = Settings.Secure
                 .isLocationProviderEnabled(contentResolver,
                         LocationManager.GPS_PROVIDER);
-        if (gpsStatus) {
-            return true;
-
-        } else {
-            return false;
-        }
+        return gpsStatus;
     }
 
     /*----------Method to create an AlertBox ------------- */

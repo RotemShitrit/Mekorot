@@ -63,11 +63,9 @@ import java.util.Map;
 import java.util.Set;
 
 public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBack,iCallback {
-
-
     private boolean _pairDialogIsON;
-    Map<Long,Long> messages;
-    
+    Map<Double,Double> messages;
+
     private TextView tv16,tv1;
     private RadioGroup input;
     private Spinner inputSpinner;
@@ -80,7 +78,7 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
     String new_fileName;// name of file
     String dataFile = ""; //all data that file include
 
-    long curr_index;
+    double curr_index;
     int msgSize;
     int current_length, input_num, length, total, start;
     String[] inputs = {"1","2","3","4","5","6","7","8","9","10"};
@@ -93,7 +91,7 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
         public void run() {
             MeganetInstances.getInstance().GetMeganetEngine().Disconnect();
             MeganetInstances.getInstance().GetMeganetEngine().reset_timerCount();
-            toast.makeText(getApplicationContext(), "החיבור אבד!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "החיבור אבד!", Toast.LENGTH_LONG).show();
 
             synchronized(this)
             {
@@ -114,13 +112,13 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
                 start += length;
                 if (start + length > total)
                     len1 = total - start + 1;
-                toast.makeText(getApplicationContext(), "מקבל...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "מקבל...", Toast.LENGTH_SHORT).show();
                 MeganetInstances.getInstance().GetMeganetEngine().GetLog(input_num, start, len1, false);
             }
             else
             {
                 if (!send_request) { // If we ask all of reads and didn't receive all, we need to send request for the missing reads
-                    toast.makeText(getApplicationContext(), "מסיים תהליך...", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "מסיים תהליך...", Toast.LENGTH_LONG).show();
                     send_request = true;
                 }
                 send_requests();
@@ -139,7 +137,7 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
         getSupportActionBar().setCustomView(R.layout.actionbar_title);
 
         View v = getSupportActionBar().getCustomView();
-        TextView titleTxtView = (TextView) v.findViewById(R.id.mytext);
+        TextView titleTxtView = v.findViewById(R.id.mytext);
         titleTxtView.setText("יומן היסטוריית קריאות");
 
         toast = new Toast(this);
@@ -212,7 +210,7 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
             }
         });
 
-        messages = new HashMap<Long, Long>();
+        messages = new HashMap<Double, Double>();
 
         _pairDialogIsON = false;
         start = 1; // the first read of a package
@@ -233,7 +231,7 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
             @Override
             public void onClick(View v) {
                 MeganetInstances.getInstance().GetMeganetEngine().Prompt(MeganetEngine.ePromptType.TEN_CHR_PAIRING, PromptConvert("E"));
-                toast.makeText(getApplicationContext(), "מחכה לתגובת יחידת הקצה", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "ממתין לתגובת יחידת הקצה", Toast.LENGTH_LONG).show();
                 CommonSettingsData data = new CommonSettingsData(6, "last_programm_prompt_type", PromptConvert("E"));
                 MeganetInstances.getInstance().GetMeganetDb().updateProperty(data);
 
@@ -288,11 +286,11 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
                 .setCancelable(false)
                 .setPositiveButton("כן", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        toast.makeText(getApplicationContext(), "היחידה התחברה",
+                        Toast.makeText(getApplicationContext(), "היחידה התחברה",
                         Toast.LENGTH_SHORT).show();
 
                         promptBtn.setVisibility(View.INVISIBLE);
-                        tv1.setText("התחבר עם יחידת קצה: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress());
+                        tv1.setText("מחובר ליחידת קצה: " + MeganetInstances.getInstance().GetMeganetEngine().GetUnitAddress());
                         int ndevice = Integer.decode("0x" +  MeganetInstances.getInstance().GetMeganetEngine().GetNdevice())-1;
                         if(ndevice == 45) {
                             getLogBtn.setVisibility(View.VISIBLE);
@@ -331,7 +329,7 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
                 .setNegativeButton("לא", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // some code if you want
-                        toast.makeText(getApplicationContext(), "ההתחברות ליחידה התבטלה", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "ההתחברות ליחידה התבטלה", Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
                         _pairDialogIsON = false;
                         MeganetInstances.getInstance().GetMeganetEngine().Disconnect();
@@ -366,7 +364,7 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
     @Override
     public void ReadData(byte[] dataArr_prm) { //
         int len, num_of_msgs;
-        long first_index, read;
+        double first_index, read;
         byte[] msg;
 
         if(dataArr_prm == null) { // If the device connection was disconnected
@@ -401,7 +399,7 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
                     num_of_msgs = (len - 7) / msgSize;
 
                     for (int i = 0; i < num_of_msgs; i++) {
-                        read = ConvertByteToNumber(Arrays.copyOfRange(msg, 9 + 5 * i, 14 + 5 * i));
+                        read = ConvertByteToNumber(Arrays.copyOfRange(msg, 9 + msgSize * i, 9 + msgSize * (i+1)));
                         messages.put(first_index + i, read);
                         curr_index++;
                     }
@@ -415,8 +413,8 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
             if (current_length == total) { // If we received all reads we need to upload the history log to FTP
                 byte[] tamper_msg = {-1, -1, -1, -1, -1};
                 double tamper = ConvertByteToNumber(tamper_msg);
-                long id, message_prm;
-                List<Long> messagesByKey = new ArrayList<Long>(messages.keySet());
+                double id, message_prm;
+                List<Double> messagesByKey = new ArrayList<Double>(messages.keySet());
                 toast.cancel();
 
                 Collections.sort(messagesByKey);
@@ -426,17 +424,24 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
                 int hoursToSubtract;
                 Calendar curr_read;
 
-                for (long key : messagesByKey) {
+                for (double key : messagesByKey) {
                     curr_read = (Calendar) last_read.clone();
                     id = key;
                     message_prm = messages.get(key);
 
                     //Insert Id
-                    dataFile += String.valueOf(id) + ", ";
+                    dataFile += id + ", ";
 
                     //Insert Hour
-                    hoursToSubtract = (int) (id - 1);
-                    curr_read.add(Calendar.HOUR, -hoursToSubtract);
+                    if(msgSize == 5) {
+                        hoursToSubtract = (int) (id-1);
+                        curr_read.add(Calendar.HOUR, -hoursToSubtract);
+                    }
+                    else {
+                        hoursToSubtract = (int) ((id-1)*15);
+                        curr_read.add(Calendar.MINUTE, -hoursToSubtract);
+                    }
+
                     _date = format.format(curr_read.getTime());
                     dataFile += _date + ", ";
 
@@ -444,7 +449,7 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
                     if (message_prm == tamper) {
                         dataFile += "TAMPER" + ", ";
                     } else {
-                        dataFile += String.valueOf(message_prm) + ", ";
+                        dataFile += message_prm + ", ";
                     }
 
                     //Insert Address
@@ -466,19 +471,18 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
                     File file = new File(myDir, new_fileName);
                     if (file.exists())
                         file.delete();
-
                     try {
                         FileOutputStream out = new FileOutputStream(file);
                         out.write(dataFile.getBytes());
                         out.close();
-                        toast.makeText(getApplicationContext(), "הקובץ נשמר בתיקיית saved_logs באחסון החיצוני" , Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "הקובץ נשמר בתיקיית saved_logs באחסון החיצוני" , Toast.LENGTH_LONG).show();
 
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
 
                 } else {
-                    toast.makeText(getApplicationContext(), "שמירת קובץ נכשלה!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "שמירת קובץ נכשלה!",Toast.LENGTH_LONG).show();
                 }
                 finish();
                 /*
@@ -497,9 +501,10 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
         //return(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED);
         if ((ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)) {
-            toast.makeText(getApplicationContext(), "לא ניתן להמשיך בפעולה! \n יש להכנס להגדרות האפליקציה ולאפשר גישה לקבצים.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "לא ניתן להמשיך בפעולה! \n יש להכנס להגדרות האפליקציה ולאפשר גישה לקבצים.", Toast.LENGTH_SHORT).show();
             return false;
         } else {
+            Log.i("State", "Yes, it is permitted!");
             return true; // Permission has already been granted
         }
     }
@@ -516,12 +521,12 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
 
     public void send_requests() {
         int len;
-        List<Long> messagesByKey = new ArrayList<Long>(messages.keySet());
+        List<Double> messagesByKey = new ArrayList<Double>(messages.keySet());
         Collections.sort(messagesByKey);
 
         if (current_length < total) {
             int index = 1;
-            for (Long key : messagesByKey) {
+            for (Double key : messagesByKey) {
                 if (index < key) {
                     len = (int) (key - index);
                     if (len > 5)
@@ -544,22 +549,22 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
         if( MeganetInstances.getInstance().GetMeganetEngine().get_timerCount() >= 5)// If we didn't success to receive the last read after 5 attempts, we disconnect.
         {
             MeganetInstances.getInstance().GetMeganetEngine().reset_timerCount();
-            toast.makeText(getApplicationContext(), "החיבור אבד!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "החיבור אבד!", Toast.LENGTH_SHORT).show();
             MeganetInstances.getInstance().GetMeganetEngine().Disconnect();
             finish();
         }
         else {
             MeganetInstances.getInstance().GetMeganetEngine().reset_timerCount();
-            int seconds = (int) ConvertByteToNumber(Arrays.copyOfRange(dataArr_prm, 7, 9)); // get the number of second that pass from the last read
+            int seconds =  (int)ConvertByteToNumber(Arrays.copyOfRange(dataArr_prm, 7, 9)); // get the number of second that pass from the last read
             last_read.add(Calendar.SECOND, -seconds); // calculate the date of the last read
-            toast.makeText(getApplicationContext(), "מקבל...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "מקבל...", Toast.LENGTH_SHORT).show();
             MeganetInstances.getInstance().GetMeganetEngine().GetLog(input_num, start, length, false); // send get log
         }
     }
 
-    public long ConvertByteToNumber(byte[] bytes)
+    public double ConvertByteToNumber(byte[] bytes)
     {
-        long number = 0;
+        double number = 0;
         for(int i = 0; i<bytes.length; i++)
         {
             number += number * 255 + (bytes[i] & 0xFF);
@@ -596,7 +601,7 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
         {
             MeganetInstances.getInstance().GetMeganetEngine().reset_timerCount();
             MeganetInstances.getInstance().GetMeganetEngine().Disconnect();
-            toast.makeText(getApplicationContext(), "החיבור אבד!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "החיבור אבד!", Toast.LENGTH_SHORT).show();
             finish();
         }
         else {
@@ -762,7 +767,7 @@ public class History_Log_2 extends AppCompatActivity implements iReadMeterCallBa
                 alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED);
             }
             else {
-                toast.makeText(getApplicationContext(), "Uploaded to FTP!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Uploaded to FTP!", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(History_Log_2.this, History_Log_4.class);
                 startActivity(intent);
             }

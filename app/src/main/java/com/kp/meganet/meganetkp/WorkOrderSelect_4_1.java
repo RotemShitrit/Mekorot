@@ -47,7 +47,7 @@ public class WorkOrderSelect_4_1 extends AppCompatActivity {
 
                 LayoutInflater layoutInflater = LayoutInflater.from(WorkOrderSelect_4_1.this);
                 View promptView = layoutInflater.inflate(R.layout.enter_id, null);
-                final EditText input = (EditText) promptView.findViewById(R.id.edittext);
+                final EditText input = promptView.findViewById(R.id.edittext);
                 input.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
                 AlertDialog dialog = new AlertDialog.Builder(WorkOrderSelect_4_1.this)
@@ -80,7 +80,7 @@ public class WorkOrderSelect_4_1 extends AppCompatActivity {
 
                 LayoutInflater layoutInflater = LayoutInflater.from(WorkOrderSelect_4_1.this);
                 View promptView = layoutInflater.inflate(R.layout.enter_id, null);
-                final EditText input = (EditText) promptView.findViewById(R.id.edittext);
+                final EditText input = promptView.findViewById(R.id.edittext);
                 input.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
                 AlertDialog dialog = new AlertDialog.Builder(WorkOrderSelect_4_1.this)
@@ -113,7 +113,7 @@ public class WorkOrderSelect_4_1 extends AppCompatActivity {
 
                 LayoutInflater layoutInflater = LayoutInflater.from(WorkOrderSelect_4_1.this);
                 View promptView = layoutInflater.inflate(R.layout.enter_id, null);
-                final EditText input = (EditText) promptView.findViewById(R.id.edittext);
+                final EditText input = promptView.findViewById(R.id.edittext);
                 input.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
                 AlertDialog dialog = new AlertDialog.Builder(WorkOrderSelect_4_1.this)

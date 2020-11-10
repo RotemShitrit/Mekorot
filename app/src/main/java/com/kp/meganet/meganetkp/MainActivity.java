@@ -416,7 +416,7 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case 4:
-                Toast.makeText(getApplicationContext(), "RANMAN RSSI", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "עוצמות קליטה", Toast.LENGTH_LONG).show();
 
                 String url = MeganetInstances.getInstance().GetMeganetDb().getSetting(7).GetKeyValue();//"http://www.google.com";
                 if (!url.startsWith("http://") && !url.startsWith("https://"))
@@ -455,7 +455,7 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case 8: // If there is no internet, open WorkOrderSelect_2 (a message to connect internet)
-                ConnectivityManager cm = (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
+                ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
                 if (cm.getActiveNetworkInfo() != null) {
                     intent = new Intent(MainActivity.this, WorkOrderSelect_1.class);
                 }
@@ -483,7 +483,7 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case 11:
-                Toast.makeText(getApplicationContext(), "קצב זרימה", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "ספיקה רגעית", Toast.LENGTH_LONG).show();
                 intent = new Intent(MainActivity.this, ConsumptionActivity.class);
                 startActivity(intent);
                 // TODO Something

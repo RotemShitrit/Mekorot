@@ -461,7 +461,7 @@ public class ProgrammActivity extends AppCompatActivity implements iCallback{
                     if(IsInRange(_currentReadData.get(_selectedItem).ParameterName, _currentReadData.get(_selectedItem).MinValue, _currentReadData.get(_selectedItem).MaxValue, FrequencyFormat(paramEditText.getText().toString(), true)))
                         _currentReadData.get(_selectedItem).TabName = FrequencyFormat(paramEditText.getText().toString(), true);
                     else
-                        Toast.makeText(getApplicationContext(), " Update value not in range. /nRange between " + String.valueOf(_currentReadData.get(_selectedItem).MinValue) + " - " + String.valueOf(_currentReadData.get(_selectedItem).MaxValue) + ". Update fail !",
+                        Toast.makeText(getApplicationContext(), " Update value not in range. /nRange between " + _currentReadData.get(_selectedItem).MinValue + " - " + _currentReadData.get(_selectedItem).MaxValue + ". Update fail !",
                                 Toast.LENGTH_LONG).show();
                 }
                 else if(_currentReadData.get(_selectedItem).ParameterType.contains("FREQUENCY"))
@@ -470,7 +470,7 @@ public class ProgrammActivity extends AppCompatActivity implements iCallback{
                         if (IsInRange(_currentReadData.get(_selectedItem).ParameterName, _currentReadData.get(_selectedItem).MinValue, _currentReadData.get(_selectedItem).MaxValue, paramEditText.getText().toString())) {
                             _currentReadData.get(_selectedItem).TabName = FreqConvert1(paramEditText.getText().toString(), _currentReadData.get(_selectedItem).StepOpt);
                         } else
-                            Toast.makeText(getApplicationContext(), " Update value not in range. /nRange between " + String.valueOf(_currentReadData.get(_selectedItem).MinValue) + " - " + String.valueOf(_currentReadData.get(_selectedItem).MaxValue) + ". Update fail !",
+                            Toast.makeText(getApplicationContext(), " Update value not in range. /nRange between " + _currentReadData.get(_selectedItem).MinValue + " - " + _currentReadData.get(_selectedItem).MaxValue + ". Update fail !",
                                     Toast.LENGTH_LONG).show();
                     }
                 }
@@ -479,7 +479,7 @@ public class ProgrammActivity extends AppCompatActivity implements iCallback{
                     if(IsInRange(_currentReadData.get(_selectedItem).ParameterName, _currentReadData.get(_selectedItem).MinValue, _currentReadData.get(_selectedItem).MaxValue, paramEditText.getText().toString()))
                         _currentReadData.get(_selectedItem).TabName = paramEditText.getText().toString();
                     else
-                        Toast.makeText(getApplicationContext(), " Update value not in range. /nRange between " + String.valueOf(_currentReadData.get(_selectedItem).MinValue) + " - " + String.valueOf(_currentReadData.get(_selectedItem).MaxValue) + ". Update fail !",
+                        Toast.makeText(getApplicationContext(), " Update value not in range. /nRange between " + _currentReadData.get(_selectedItem).MinValue + " - " + _currentReadData.get(_selectedItem).MaxValue + ". Update fail !",
                                 Toast.LENGTH_LONG).show();
                 }
 
@@ -1170,7 +1170,7 @@ public class ProgrammActivity extends AppCompatActivity implements iCallback{
         // Set an EditText view to get user input
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         View promptView = layoutInflater.inflate(R.layout.programm_password, null);
-        final EditText input = (EditText) promptView.findViewById(R.id.edittext);
+        final EditText input = promptView.findViewById(R.id.edittext);
         input.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
 

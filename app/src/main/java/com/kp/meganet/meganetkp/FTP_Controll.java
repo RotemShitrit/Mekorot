@@ -35,7 +35,7 @@ public class FTP_Controll extends AppCompatActivity {
         getSupportActionBar().setCustomView(R.layout.actionbar_title);
 
         View v = getSupportActionBar().getCustomView();
-        TextView titleTxtView = (TextView) v.findViewById(R.id.mytext);
+        TextView titleTxtView = v.findViewById(R.id.mytext);
         titleTxtView.setText("הגדרות FTP");
 
         ftpIP = (EditText) findViewById(R.id.IP_FTP);

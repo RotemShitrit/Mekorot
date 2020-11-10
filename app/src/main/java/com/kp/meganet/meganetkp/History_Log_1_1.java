@@ -42,7 +42,7 @@ public class History_Log_1_1 extends AppCompatActivity { //Present 2 option for 
 
                 LayoutInflater layoutInflater = LayoutInflater.from(History_Log_1_1.this);
                 View promptView = layoutInflater.inflate(R.layout.enter_id, null);
-                final EditText input = (EditText) promptView.findViewById(R.id.edittext); // Set an EditText view to get the user input
+                final EditText input = promptView.findViewById(R.id.edittext); // Set an EditText view to get the user input
                 input.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
                 AlertDialog dialog = new AlertDialog.Builder(History_Log_1_1.this) //Alert dialog for inserting unitID of pit
@@ -67,7 +67,7 @@ public class History_Log_1_1 extends AppCompatActivity { //Present 2 option for 
 
                 LayoutInflater layoutInflater = LayoutInflater.from(History_Log_1_1.this);
                 View promptView = layoutInflater.inflate(R.layout.enter_id, null);
-                final EditText input = (EditText) promptView.findViewById(R.id.edittext); // Set an EditText view to get user input
+                final EditText input = promptView.findViewById(R.id.edittext); // Set an EditText view to get user input
                 input.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
                 AlertDialog dialog = new AlertDialog.Builder(History_Log_1_1.this) //Alert dialog for inserting unitID of wall

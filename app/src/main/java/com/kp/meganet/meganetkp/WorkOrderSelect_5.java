@@ -81,8 +81,8 @@ public class WorkOrderSelect_5  extends AppCompatActivity implements iPulseCallb
 
             LayoutInflater layoutInflater = LayoutInflater.from(WorkOrderSelect_5.this);
             View promptView = layoutInflater.inflate(R.layout.enter_details, null);
-            final EditText input_serialNum = (EditText) promptView.findViewById(R.id.edittext);
-            final EditText input_reading = (EditText) promptView.findViewById(R.id.edittext2);
+            final EditText input_serialNum = promptView.findViewById(R.id.edittext);
+            final EditText input_reading = promptView.findViewById(R.id.edittext2);
             input_serialNum.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
             input_reading.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
@@ -108,8 +108,8 @@ public class WorkOrderSelect_5  extends AppCompatActivity implements iPulseCallb
 
             LayoutInflater layoutInflater = LayoutInflater.from(WorkOrderSelect_5.this);
             View promptView = layoutInflater.inflate(R.layout.enter_details, null);
-            final EditText input_serialNum = (EditText) promptView.findViewById(R.id.edittext);
-            final EditText input_reading = (EditText) promptView.findViewById(R.id.edittext2);
+            final EditText input_serialNum = promptView.findViewById(R.id.edittext);
+            final EditText input_reading = promptView.findViewById(R.id.edittext2);
             input_serialNum.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
             input_reading.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
@@ -138,8 +138,8 @@ public class WorkOrderSelect_5  extends AppCompatActivity implements iPulseCallb
 
             LayoutInflater layoutInflater = LayoutInflater.from(WorkOrderSelect_5.this);
             View promptView = layoutInflater.inflate(R.layout.enter_details, null);
-            final EditText input_serialNum = (EditText) promptView.findViewById(R.id.edittext);
-            final EditText input_reading = (EditText) promptView.findViewById(R.id.edittext2);
+            final EditText input_serialNum = promptView.findViewById(R.id.edittext);
+            final EditText input_reading = promptView.findViewById(R.id.edittext2);
             input_serialNum.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
             input_reading.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
@@ -164,8 +164,8 @@ public class WorkOrderSelect_5  extends AppCompatActivity implements iPulseCallb
 
             LayoutInflater layoutInflater = LayoutInflater.from(WorkOrderSelect_5.this);
             View promptView = layoutInflater.inflate(R.layout.enter_details, null);
-            final EditText input_serialNum = (EditText) promptView.findViewById(R.id.edittext);
-            final EditText input_reading = (EditText) promptView.findViewById(R.id.edittext2);
+            final EditText input_serialNum = promptView.findViewById(R.id.edittext);
+            final EditText input_reading = promptView.findViewById(R.id.edittext2);
             input_serialNum.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
             input_reading.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
@@ -197,8 +197,8 @@ public class WorkOrderSelect_5  extends AppCompatActivity implements iPulseCallb
 
             LayoutInflater layoutInflater = LayoutInflater.from(WorkOrderSelect_5.this);
             View promptView = layoutInflater.inflate(R.layout.enter_details, null);
-            final EditText input_serialNum = (EditText) promptView.findViewById(R.id.edittext);
-            final EditText input_reading = (EditText) promptView.findViewById(R.id.edittext2);
+            final EditText input_serialNum = promptView.findViewById(R.id.edittext);
+            final EditText input_reading = promptView.findViewById(R.id.edittext2);
             input_serialNum.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
             input_reading.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
@@ -233,8 +233,8 @@ public class WorkOrderSelect_5  extends AppCompatActivity implements iPulseCallb
 
                     LayoutInflater layoutInflater = LayoutInflater.from(WorkOrderSelect_5.this);
                     View promptView = layoutInflater.inflate(R.layout.enter_details, null);
-                    final EditText input_serialNum = (EditText) promptView.findViewById(R.id.edittext);
-                    final EditText input_reading = (EditText) promptView.findViewById(R.id.edittext2);
+                    final EditText input_serialNum = promptView.findViewById(R.id.edittext);
+                    final EditText input_reading = promptView.findViewById(R.id.edittext2);
                     input_serialNum.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
                     input_reading.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
@@ -260,8 +260,8 @@ public class WorkOrderSelect_5  extends AppCompatActivity implements iPulseCallb
 
                     LayoutInflater layoutInflater = LayoutInflater.from(WorkOrderSelect_5.this);
                     View promptView = layoutInflater.inflate(R.layout.enter_details, null);
-                    final EditText input_serialNum = (EditText) promptView.findViewById(R.id.edittext);
-                    final EditText input_reading = (EditText) promptView.findViewById(R.id.edittext2);
+                    final EditText input_serialNum = promptView.findViewById(R.id.edittext);
+                    final EditText input_reading = promptView.findViewById(R.id.edittext2);
                     input_serialNum.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
                     input_reading.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
@@ -290,8 +290,8 @@ public class WorkOrderSelect_5  extends AppCompatActivity implements iPulseCallb
 
                     LayoutInflater layoutInflater = LayoutInflater.from(WorkOrderSelect_5.this);
                     View promptView = layoutInflater.inflate(R.layout.enter_details, null);
-                    final EditText input_serialNum = (EditText) promptView.findViewById(R.id.edittext);
-                    final EditText input_reading = (EditText) promptView.findViewById(R.id.edittext2);
+                    final EditText input_serialNum = promptView.findViewById(R.id.edittext);
+                    final EditText input_reading = promptView.findViewById(R.id.edittext2);
                     input_serialNum.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
                     input_reading.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
@@ -316,8 +316,8 @@ public class WorkOrderSelect_5  extends AppCompatActivity implements iPulseCallb
 
                     LayoutInflater layoutInflater = LayoutInflater.from(WorkOrderSelect_5.this);
                     View promptView = layoutInflater.inflate(R.layout.enter_details, null);
-                    final EditText input_serialNum = (EditText) promptView.findViewById(R.id.edittext);
-                    final EditText input_reading = (EditText) promptView.findViewById(R.id.edittext2);
+                    final EditText input_serialNum = promptView.findViewById(R.id.edittext);
+                    final EditText input_reading = promptView.findViewById(R.id.edittext2);
                     input_serialNum.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
                     input_reading.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
@@ -349,8 +349,8 @@ public class WorkOrderSelect_5  extends AppCompatActivity implements iPulseCallb
 
                     LayoutInflater layoutInflater = LayoutInflater.from(WorkOrderSelect_5.this);
                     View promptView = layoutInflater.inflate(R.layout.enter_details, null);
-                    final EditText input_serialNum = (EditText) promptView.findViewById(R.id.edittext);
-                    final EditText input_reading = (EditText) promptView.findViewById(R.id.edittext2);
+                    final EditText input_serialNum = promptView.findViewById(R.id.edittext);
+                    final EditText input_reading = promptView.findViewById(R.id.edittext2);
                     input_serialNum.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
                     input_reading.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
@@ -462,8 +462,8 @@ public class WorkOrderSelect_5  extends AppCompatActivity implements iPulseCallb
                             if(!MeganetInstances.getInstance().GetMeganetEngine().get_deviceVersion().startsWith("TOUAREG")) {
                                 LayoutInflater layoutInflater = LayoutInflater.from(WorkOrderSelect_5.this);
                                 View promptView = layoutInflater.inflate(R.layout.enter_details, null);
-                                final EditText input_serialNum = (EditText) promptView.findViewById(R.id.edittext);
-                                final EditText input_reading = (EditText) promptView.findViewById(R.id.edittext2);
+                                final EditText input_serialNum = promptView.findViewById(R.id.edittext);
+                                final EditText input_reading = promptView.findViewById(R.id.edittext2);
                                 input_serialNum.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
                                 input_reading.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
